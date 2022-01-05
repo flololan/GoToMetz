@@ -11,6 +11,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.widget.Button;
 import android.widget.Toast;
@@ -283,6 +284,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             if (userLocation != null)
                this.onLocationChanged(userLocation);
+            else{
+                locationManager.requestLocationUpdates(bestProvider, 1000, 0, this);
+                Log.e("Erreur Localisation","Entrer dans else de requestLocationUpdates");
+            }
 
 
 
@@ -298,6 +303,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
+        Log.e("Erreur Localisation","onLocationChanged has been called");
         this.setUserLocation(location);
         this.searchSites(location);
 
