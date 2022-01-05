@@ -5,6 +5,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import androidx.annotation.Nullable;
+
 import com.example.gotometz.dao.ServiceDAO;
 import com.example.gotometz.model.Category;
 
@@ -69,6 +71,7 @@ public class SQLiteCategoryDao extends SQLiteDao<Category> implements ServiceDAO
     }
 
     @Override
+    @Nullable
     public Category findById(long id) {
         openReadable();
 
@@ -78,15 +81,18 @@ public class SQLiteCategoryDao extends SQLiteDao<Category> implements ServiceDAO
                 new String[] { String.valueOf(id) },
                 null, null, null, null);
 
-        cursor.moveToFirst();
+        if (cursor.moveToFirst()) {
+            Category category = cursorToObject(cursor);
 
-        Category category = cursorToObject(cursor);
+            cursor.close();
+            close();
+            return category;
+        }
 
         cursor.close();
-
         close();
 
-        return category;
+        return null;
     }
 
     @Override

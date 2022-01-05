@@ -19,6 +19,7 @@ public class CategoryProvider extends ContentProvider {
     // FOR DATA
     public static final String AUTHORITY = "com.example.gotometz.provider";
     public static final String TABLE_NAME = Category.class.getSimpleName();
+    public static final String[] DEFAULT_CATEGORIES = {"restaurant", "boutique", "boulangerie"};
 
     // The site service
     private CategoryService categoryService;
@@ -26,7 +27,7 @@ public class CategoryProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
         this.categoryService = CategoryService.getInstance(getContext());
-
+        this.createDefaultCategories();
         return true;
     }
 
@@ -79,7 +80,7 @@ public class CategoryProvider extends ContentProvider {
 
         return count;
     }
-    
+
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String selection, @Nullable String[] selectionArgs) {
@@ -92,5 +93,17 @@ public class CategoryProvider extends ContentProvider {
         }
 
         throw new IllegalArgumentException("Failed to update row into " + uri);
+    }
+
+    private void createDefaultCategories() {
+        int id = 1;
+
+        for(String category : this.DEFAULT_CATEGORIES) {
+            Boolean categoryExists = categoryService.findById(id) != null;
+
+            if (!categoryExists)
+                categoryService.create(new Category(id, category));
+            id++;
+        }
     }
 }

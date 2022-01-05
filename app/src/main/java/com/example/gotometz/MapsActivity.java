@@ -268,9 +268,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
             Criteria criteria = new Criteria();
-            bestProvider = String.valueOf(locationManager.getBestProvider(criteria, true)).toString();
+            bestProvider = LocationManager.NETWORK_PROVIDER;
             locationManager.requestLocationUpdates(bestProvider, 1000, 0, this);
-
 
             criteria.setAccuracy(Criteria.ACCURACY_FINE);
             criteria.setAltitudeRequired(true);
@@ -285,7 +284,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             if (userLocation != null)
                this.onLocationChanged(userLocation);
             else{
-                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, this);
+                locationManager.requestLocationUpdates(bestProvider, 1000, 0, this);
                 Log.e("Erreur Localisation","Entrer dans else de requestLocationUpdates");
                 if (userLocation != null)
                     this.onLocationChanged(userLocation);

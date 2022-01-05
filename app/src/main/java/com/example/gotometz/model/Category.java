@@ -12,8 +12,7 @@ public class Category {
     private long id;
     private String label;
 
-    public Category() {
-    }
+    public Category() { }
 
     public Category(long id, String label) {
         this.setId(id);
