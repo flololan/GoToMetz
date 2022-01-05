@@ -1,9 +1,13 @@
 package com.example.gotometz.map;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.location.Criteria;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +31,10 @@ public class SearchSiteDialog extends AppCompatDialogFragment {
     private Location location;
 
     private SearchModalDialogListener listener;
+    public LocationManager locationManager;
+    public Criteria criteria;
+    public String bestProvider;
+
 
     public SearchSiteDialog(MapsActivity mapsActivity, Location location) {
         this.mapsActivity = mapsActivity;
@@ -49,6 +57,7 @@ public class SearchSiteDialog extends AppCompatDialogFragment {
         }
     }
 
+    @SuppressLint("MissingPermission")
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(mapsActivity);
@@ -59,8 +68,16 @@ public class SearchSiteDialog extends AppCompatDialogFragment {
         EditText siteLatitudeET = view.findViewById(R.id.siteLatitudeET);
         EditText siteLongitudeET = view.findViewById(R.id.siteLongitudeET);
 
-        siteLatitudeET.setText(String.valueOf(location.getLatitude()));
-        siteLongitudeET.setText(String.valueOf(location.getLongitude()));
+        if (location != null){
+            siteLatitudeET.setText(String.valueOf(location.getLatitude()));
+            siteLongitudeET.setText(String.valueOf(location.getLongitude()));
+        }
+        else{
+            bestProvider = String.valueOf(locationManager.getBestProvider(criteria, true)).toString();
+            locationManager.requestLocationUpdates(bestProvider, 1000, 0, (LocationListener) this);
+        }
+
+
 
         final Spinner categorySPN = view.findViewById(R.id.siteCategorySPN);
         CategoryService categoryDao = CategoryService.getInstance(mapsActivity);
