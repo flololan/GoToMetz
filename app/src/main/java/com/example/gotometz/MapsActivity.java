@@ -287,6 +287,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             else{
                 locationManager.requestLocationUpdates(bestProvider, 1000, 0, this);
                 Log.e("Erreur Localisation","Entrer dans else de requestLocationUpdates");
+                if (userLocation != null)
+                    this.onLocationChanged(userLocation);
             }
 
 
