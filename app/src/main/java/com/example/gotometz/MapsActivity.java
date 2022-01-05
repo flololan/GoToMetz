@@ -45,7 +45,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public GoogleMap mMap;
 
-    private Location userLocation;
+    private Location location;
 
     private static int permissions = 0;
 
@@ -192,8 +192,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.setMyLocationEnabled(true);
 
         //Zoomer sur la position de l'utilisateur
-        if (userLocation != null) {
-            LatLng userLatLng = new LatLng(userLocation.getLatitude(), userLocation.getLongitude());
+        if (location != null) {
+            LatLng userLatLng = new LatLng(location.getLatitude(), location.getLongitude());
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(userLatLng, 12);
             mMap.animateCamera(cameraUpdate);
         }
@@ -268,8 +268,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
             Criteria criteria = new Criteria();
-            bestProvider = String.valueOf(locationManager.getBestProvider(criteria, true)).toString();
-            locationManager.requestLocationUpdates(bestProvider, 1000, 0, this);
+            provider = LocationManager.NETWORK_PROVIDER;
 
 
             criteria.setAccuracy(Criteria.ACCURACY_FINE);
@@ -280,15 +279,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             criteria.setPowerRequirement(Criteria.POWER_HIGH);
 
 
-            setUserLocation(locationManager.getLastKnownLocation(bestProvider));
+            setUserLocation(locationManager.getLastKnownLocation(provider));
 
-            if (userLocation != null)
-               this.onLocationChanged(userLocation);
+            if (location != null)
+               this.onLocationChanged(location);
             else{
-                locationManager.requestLocationUpdates(bestProvider, 1000, 0, this);
+                locationManager.requestLocationUpdates(provider, 1000, 0, this);
                 Log.e("Erreur Localisation","Entrer dans else de requestLocationUpdates");
-                if (userLocation != null)
-                    this.onLocationChanged(userLocation);
+                if (location != null)
+                    this.onLocationChanged(location);
             }
 
 
@@ -296,11 +295,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     public Location getUserLocation() {
-        return userLocation;
+        return location;
     }
 
-    public void setUserLocation(Location userLocation) {
-        this.userLocation = userLocation;
+    public void setUserLocation(Location location) {
+        this.location = location;
     }
 
     @Override
