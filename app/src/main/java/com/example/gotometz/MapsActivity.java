@@ -279,9 +279,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             criteria.setPowerRequirement(Criteria.POWER_HIGH);
 
 
-            provider = bestProvider;
-
-            setUserLocation(locationManager.getLastKnownLocation(provider));
+            setUserLocation(locationManager.getLastKnownLocation(bestProvider));
 
             if (userLocation != null)
                this.onLocationChanged(userLocation);
