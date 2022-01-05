@@ -25,7 +25,6 @@ import com.example.gotometz.administration.DisplaySiteFormListener;
 import com.example.gotometz.dao.CategoryService;
 import com.example.gotometz.dao.SiteService;
 import com.example.gotometz.map.MarkerDescription;
-import com.example.gotometz.map.MyLocationListener;
 import com.example.gotometz.map.MyMapListener;
 import com.example.gotometz.map.SearchSiteDialog;
 import com.example.gotometz.map.SearchSiteListener;
@@ -54,7 +53,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     LocationManager locationManager = null;
     private String provider;
-    MyLocationListener myLocationListener; // location listener
+    //MyLocationListener myLocationListener; // location listener
 
     // Used when doing a site research
     private Category searchedCategory;
@@ -281,11 +280,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
             provider = bestProvider;
+
             setUserLocation(locationManager.getLastKnownLocation(provider));
-            myLocationListener = new MyLocationListener(this);
 
             if (userLocation != null)
-                myLocationListener.onLocationChanged(userLocation);
+               this.onLocationChanged(userLocation);
 
 
 
@@ -301,6 +300,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
+        this.setUserLocation(location);
+        this.searchSites(location);
 
     }
     @Override
