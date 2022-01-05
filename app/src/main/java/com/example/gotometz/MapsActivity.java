@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -40,7 +41,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, SearchSiteDialog.SearchModalDialogListener {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, SearchSiteDialog.SearchModalDialogListener, LocationListener {
 
     public GoogleMap mMap;
 
@@ -62,6 +63,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public MyMapListener myMapListener;
     public Button searchSiteBTN;
     public Button addSiteBTN;
+
+    public String bestProvider;
+    public Criteria criteria;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -260,10 +264,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @SuppressLint("MissingPermission")
     private void locationInitialization() {
-        if (locationManager == null) {
-            locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 
+
+            locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
             Criteria criteria = new Criteria();
+            bestProvider = String.valueOf(locationManager.getBestProvider(criteria, true)).toString();
+            locationManager.requestLocationUpdates(bestProvider, 1000, 0, this);
+
+
             criteria.setAccuracy(Criteria.ACCURACY_FINE);
             criteria.setAltitudeRequired(true);
             criteria.setBearingRequired(true);
@@ -271,19 +279,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             criteria.setCostAllowed(true);
             criteria.setPowerRequirement(Criteria.POWER_HIGH);
 
-            provider = locationManager.getBestProvider(criteria, true);
-        }
 
-        if (provider != null) {
+            provider = bestProvider;
             setUserLocation(locationManager.getLastKnownLocation(provider));
-
             myLocationListener = new MyLocationListener(this);
 
             if (userLocation != null)
                 myLocationListener.onLocationChanged(userLocation);
 
-            locationManager.requestLocationUpdates(provider, 15000, 10, myLocationListener);
-        }
+
+
     }
 
     public Location getUserLocation() {
@@ -292,5 +297,28 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public void setUserLocation(Location userLocation) {
         this.userLocation = userLocation;
+    }
+
+    @Override
+    public void onLocationChanged(@NonNull Location location) {
+
+    }
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
+    }
+
+    public void searchNearestPlace(String v2txt) {
+        //.....
     }
 }
