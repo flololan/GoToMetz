@@ -5,9 +5,11 @@ import android.content.ContentUris;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.example.gotometz.dao.CategoryService;
 import com.example.gotometz.model.Category;
@@ -28,6 +30,7 @@ public class CategoryProvider extends ContentProvider {
         return true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.R)
     @Nullable
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
@@ -49,6 +52,7 @@ public class CategoryProvider extends ContentProvider {
         return "vnd.android.cursor.category/" + AUTHORITY + "." + TABLE_NAME;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.R)
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues contentValues) {
@@ -66,6 +70,7 @@ public class CategoryProvider extends ContentProvider {
         throw new IllegalArgumentException("Failed to insert row into " + uri);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
         final int count = this.categoryService.delete(ContentUris.parseId(uri));
@@ -74,7 +79,8 @@ public class CategoryProvider extends ContentProvider {
 
         return count;
     }
-
+    
+    @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String selection, @Nullable String[] selectionArgs) {
         if (contentValues != null) {

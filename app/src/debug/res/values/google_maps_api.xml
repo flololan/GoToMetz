@@ -12,7 +12,7 @@
     com.example.gotometz
 
     SHA-1 certificate fingerprint:
-    3A:70:48:94:57:46:84:8E:A2:6E:B4:D0:0B:E6:4E:72:7C:7E:8D:AF
+    0F:CA:B6:15:E9:CF:55:83:C3:4E:B9:57:71:90:0A:CF:7B:FB:98:27
 
     Alternatively, follow the directions here:
     https://developers.google.com/maps/documentation/android/start#get-key
@@ -20,5 +20,5 @@
     Once you have your key (it starts with "AIza"), replace the "google_maps_key"
     string in this file.
     -->
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAcZj2F2ZP95cEnBLs4tDNSZgbs5Zw2KYQ</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyClUq1xtvcD511cCh3BwdRjJg4_AlixSV0</string>
 </resources>
