@@ -15,7 +15,7 @@ public class StateAddSite extends StateController {
 
     @Override
     public void onClick(View v) {
-        if (v == this.myMapListener.activity.addSiteBTN) return;
+        if (v == this.myMapListener.activity.mapAddBTN) return;
 
         this.myMapListener.currentState = this.next;
     }

@@ -15,7 +15,7 @@ public class StateSearchSite extends StateController {
 
     @Override
     public void onClick(View v) {
-        if (v == this.myMapListener.activity.searchSiteBTN) return;
+        if (v == this.myMapListener.activity.mapSearchBTN) return;
 
         this.myMapListener.currentState = this.next;
     }

@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
@@ -13,6 +14,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -40,6 +42,7 @@ import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, SearchSiteDialog.SearchModalDialogListener, LocationListener {
 
@@ -61,8 +64,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private int searchedRadius;
 
     public MyMapListener myMapListener;
-    public Button searchSiteBTN;
-    public Button addSiteBTN;
+    public FloatingActionButton mapSearchBTN;
+    public FloatingActionButton mapAddBTN;
+    public FloatingActionButton cornerFloatingBTN;
+    boolean isAllFabsVisible;
 
     public String bestProvider;
     public Criteria criteria;
@@ -156,20 +161,54 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (mapFragment != null)
             mapFragment.getMapAsync(this);
 
-        //récupérer les données bdd via la DAO
+        //Get data from DB via DAO
         categoryDao = CategoryService.getInstance(this);
         siteDao = SiteService.getInstance(this);
 
-        // Bouton listeners
+        // Button listeners
 
-        Button searchSiteFromUserBTN = findViewById(R.id.searchSiteFromUserBTN);
-        searchSiteFromUserBTN.setOnClickListener(new SearchSiteListener(this));
+        FloatingActionButton personSearchBTN = findViewById(R.id.personSearchBTN);
+        personSearchBTN.setOnClickListener(new SearchSiteListener(this));
 
-        Button addSiteFromUserBTN = findViewById(R.id.addSiteFromUserBTN);
-        addSiteFromUserBTN.setOnClickListener(new DisplaySiteFormListener(this, null));
+        FloatingActionButton personAddBTN = findViewById(R.id.personAddBTN);
+        personAddBTN.setOnClickListener(new DisplaySiteFormListener(this, null));
 
-        searchSiteBTN = findViewById(R.id.searchSiteBTN);
-        addSiteBTN = findViewById(R.id.addSiteBTN);
+        mapSearchBTN= findViewById(R.id.mapSearchBTN);
+        mapAddBTN = findViewById(R.id.mapAddBTN);
+        cornerFloatingBTN = findViewById(R.id.cornerFloatingBTN);
+
+        //Floating Icon L-Menu logic
+        personSearchBTN.hide();
+        personAddBTN.hide();
+        mapSearchBTN.hide();
+        mapAddBTN.hide();
+
+        isAllFabsVisible = false;
+
+        cornerFloatingBTN.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (!isAllFabsVisible) {
+                            personSearchBTN.show();
+                            personAddBTN.show();
+                            mapSearchBTN.show();
+                            mapAddBTN.show();
+
+                            isAllFabsVisible = true;
+                        } else {
+                            personSearchBTN.hide();
+                            personAddBTN.hide();
+                            mapSearchBTN.hide();
+                            mapAddBTN.hide();
+
+                            isAllFabsVisible = false;
+                        }
+                    }
+                }
+        );
+
+
     }
 
     /**
@@ -186,12 +225,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        //Récupère la position de l'utilisateur
+        //Get user localisation
         locationInitialization();
 
         mMap.setMyLocationEnabled(true);
 
-        //Zoomer sur la position de l'utilisateur
+        //Zoom on user's position
         if (location != null) {
             LatLng userLatLng = new LatLng(location.getLatitude(), location.getLongitude());
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(userLatLng, 12);

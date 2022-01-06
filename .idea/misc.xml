@@ -3,9 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.4161458333333333" />
+        <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/drawable/add_location_24.xml" value="0.4161458333333333" />
+        <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/drawable/categories_24.xml" value="0.4161458333333333" />
         <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14322916666666666" />
-        <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/layout/activity_maps.xml" value="0.25" />
-        <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/menu/menu.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/drawable/map_24.xml" value="0.4161458333333333" />
+        <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/drawable/menu_24.xml" value="0.4161458333333333" />
+        <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/drawable/person_pin.xml" value="0.4161458333333333" />
+        <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/drawable/poi_24.xml" value="0.4161458333333333" />
+        <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/drawable/search_24.xml" value="0.4161458333333333" />
+        <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/layout/activity_category.xml" value="0.38903985507246375" />
+        <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/layout/activity_maps.xml" value="0.264" />
+        <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/layout/activity_site.xml" value="0.38903985507246375" />
+        <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/layout/list_of_item_view.xml" value="0.22760416666666666" />
+        <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/layout/marker_description.xml" value="0.22760416666666666" />
+        <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/menu/menu.xml" value="0.4" />
+        <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.4161458333333333" />
         <entry key="app/src/main/res/layout/activity_category.xml" value="0.20260416666666667" />
       </map>
     </option>
@@ -15,5 +28,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.264" />
+      </ProjectState>
+    </option>
   </component>
 </project>
