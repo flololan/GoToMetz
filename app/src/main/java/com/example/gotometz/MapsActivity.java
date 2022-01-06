@@ -162,14 +162,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         // Bouton listeners
 
-        Button searchSiteFromUserBTN = findViewById(R.id.searchSiteFromUserBTN);
+        Button searchSiteFromUserBTN = findViewById(R.id.searchSiteFromUserBTN_);
         searchSiteFromUserBTN.setOnClickListener(new SearchSiteListener(this));
 
-        Button addSiteFromUserBTN = findViewById(R.id.addSiteFromUserBTN);
+        Button addSiteFromUserBTN = findViewById(R.id.addSiteFromUserBTN_);
         addSiteFromUserBTN.setOnClickListener(new DisplaySiteFormListener(this, null));
 
-        searchSiteBTN = findViewById(R.id.searchSiteBTN);
-        addSiteBTN = findViewById(R.id.addSiteBTN);
+        searchSiteBTN = findViewById(R.id.searchSiteBTN_);
+        addSiteBTN = findViewById(R.id.addSiteBTN_);
     }
 
     /**

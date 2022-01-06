@@ -7,75 +7,75 @@
     tools:context=".MapsActivity">
 
     <fragment
-        xmlns:map="http://schemas.android.com/apk/res-auto"
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:cameraBearing="20"
+        app:cameraTilt="30"
         app:layout_constraintBottom_toTopOf="@id/menu2ContainerIV"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        tools:ignore="FragmentTagUsage"
-        map:cameraBearing="20"
-        map:cameraTilt="30"
-        map:mapType="normal"
-        map:uiCompass="true"
-        map:uiRotateGestures="true"
-        map:uiScrollGestures="true"
-        map:uiTiltGestures="true"
-        map:uiZoomControls="true"
-        map:uiZoomGestures="true" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:mapType="normal"
+        app:uiCompass="true"
+        app:uiRotateGestures="true"
+        app:uiScrollGestures="true"
+        app:uiTiltGestures="true"
+        app:uiZoomControls="true"
+        app:uiZoomGestures="true"
+        tools:ignore="FragmentTagUsage" />
 
     <ImageView
         android:id="@+id/menu2ContainerIV"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:layout_constraintTop_toBottomOf="@id/map"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:background="#BEE8FF"
+        android:background="@color/purple"
         app:layout_constraintBottom_toTopOf="@id/menu"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/map"
         tools:ignore="ContentDescription" />
 
     <Button
-        android:id="@+id/searchSiteFromUserBTN"
+        android:id="@+id/searchSiteFromUserBTN_"
         android:layout_width="43dp"
         android:layout_height="43dp"
-        android:background="@drawable/search_phone"
-        app:layout_constraintTop_toTopOf="@id/menu2ContainerIV"
+        android:background="@drawable/map"
         app:layout_constraintBottom_toBottomOf="@id/menu2ContainerIV"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/addSiteFromUserBTN" />
+        app:layout_constraintRight_toLeftOf="@id/addSiteFromUserBTN_"
+        app:layout_constraintTop_toTopOf="@id/menu2ContainerIV" />
 
     <Button
-        android:id="@+id/addSiteFromUserBTN"
+        android:id="@+id/addSiteFromUserBTN_"
         android:layout_width="43dp"
         android:layout_height="43dp"
-        android:background="@drawable/add_phone"
-        app:layout_constraintTop_toTopOf="@id/menu2ContainerIV"
+        android:background="@drawable/pin"
         app:layout_constraintBottom_toBottomOf="@id/menu2ContainerIV"
-        app:layout_constraintRight_toLeftOf="@id/searchSiteBTN"
-        app:layout_constraintLeft_toRightOf="@id/searchSiteFromUserBTN" />
+        app:layout_constraintLeft_toRightOf="@id/searchSiteFromUserBTN_"
+        app:layout_constraintRight_toLeftOf="@id/searchSiteBTN_"
+        app:layout_constraintTop_toTopOf="@id/menu2ContainerIV" />
 
     <Button
-        android:id="@+id/searchSiteBTN"
+        android:id="@+id/searchSiteBTN_"
         android:layout_width="43dp"
         android:layout_height="43dp"
-        android:background="@drawable/search"
-        app:layout_constraintTop_toTopOf="@id/menu2ContainerIV"
+        android:background="@drawable/recherche"
         app:layout_constraintBottom_toBottomOf="@id/menu2ContainerIV"
-        app:layout_constraintLeft_toRightOf="@id/addSiteFromUserBTN"
-        app:layout_constraintRight_toLeftOf="@id/addSiteBTN" />
+        app:layout_constraintLeft_toRightOf="@id/addSiteFromUserBTN_"
+        app:layout_constraintRight_toLeftOf="@id/addSiteBTN_"
+        app:layout_constraintTop_toTopOf="@id/menu2ContainerIV" />
 
     <Button
-        android:id="@+id/addSiteBTN"
+        android:id="@+id/addSiteBTN_"
         android:layout_width="43dp"
         android:layout_height="43dp"
         android:background="@drawable/add"
-        app:layout_constraintTop_toTopOf="@id/menu2ContainerIV"
         app:layout_constraintBottom_toBottomOf="@id/menu2ContainerIV"
+        app:layout_constraintLeft_toRightOf="@id/searchSiteBTN_"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/searchSiteBTN" />
+        app:layout_constraintTop_toTopOf="@id/menu2ContainerIV" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menu"

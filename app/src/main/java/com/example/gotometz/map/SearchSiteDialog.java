@@ -37,7 +37,6 @@ public class SearchSiteDialog extends AppCompatDialogFragment {
         void onDialogPositiveClick(Location location, Category category, int radius);
     }
 
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

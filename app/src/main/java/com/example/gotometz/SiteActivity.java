@@ -46,7 +46,7 @@ public class SiteActivity extends AppCompatActivity {
         listView.setAdapter(siteListView);
 
         // Bouton pour ajouter un site
-        Button addSiteBTN = findViewById(R.id.addSiteBTN);
+        Button addSiteBTN = findViewById(R.id.addSiteBTN_);
         addSiteBTN.setOnClickListener(new DisplaySiteFormListener(this, null));
     }
 

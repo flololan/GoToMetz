@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/mapMenu"
-        android:icon="@drawable/map_menu"
+    <item
+        android:id="@+id/mapMenu"
+        android:icon="@drawable/map_2"
         android:title="@string/map" />
     <item android:id="@+id/siteMenu"
         android:icon="@drawable/site_menu"

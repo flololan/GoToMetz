@@ -24,16 +24,15 @@
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@id/siteTitle"
-        app:layout_constraintBottom_toTopOf="@id/addSiteBTN"
+        app:layout_constraintBottom_toTopOf="@id/addSiteBTN_"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
-        android:id="@+id/addSiteBTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/addSite"
+        android:id="@+id/addSiteBTN_"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="40dp"
-        android:background="@color/colorAccent"
+        android:background="@drawable/add"
         android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@id/menu"
         app:layout_constraintLeft_toLeftOf="parent"
