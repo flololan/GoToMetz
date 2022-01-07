@@ -10,18 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.gooutinmetz.site.SiteActivity;
-import com.gooutinmetz.site.SiteDAOService;
 import com.gooutinmetz.R;
-import com.gooutinmetz.site.SiteModel;
 import com.gooutinmetz.site.update.DeleteSiteListener;
 import com.gooutinmetz.site.update.DisplaySiteFormListener;
 
 import java.util.List;
 
 public class SiteListView extends ArrayAdapter<SiteModel> {
-    private SiteActivity siteActivity;
-    private SiteDAOService siteDAOService;
+    private final SiteActivity siteActivity;
+    private final SiteDAOService siteDAOService;
 
     public SiteListView(SiteActivity siteActivity, List<SiteModel> sites) {
         super(siteActivity, 0, sites);

@@ -11,7 +11,7 @@ import java.util.List;
 public class SiteDAOService implements DAOService<SiteModel> {
 
     private static SiteDAOService instance;
-    private SQLiteSiteDao sqLiteSiteDao;
+    private final SQLiteSiteDao sqLiteSiteDao;
 
     private SiteDAOService(Context context){
         sqLiteSiteDao = SQLiteSiteDao.getInstance(context);
