@@ -6,7 +6,7 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 
-import com.example.gooutinmetz.R;
+import com.gooutinmetz.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Menu implements BottomNavigationView.OnNavigationItemSelectedListener {

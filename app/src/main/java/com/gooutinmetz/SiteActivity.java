@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.gooutinmetz.administration.DisplaySiteFormListener;
 import com.gooutinmetz.dao.CategoryService;
 import com.gooutinmetz.dao.SiteService;
-import com.example.gooutinmetz.R;
+import com.gooutinmetz.R;
 import com.gooutinmetz.administration.SiteListView;
 import com.gooutinmetz.model.Site;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

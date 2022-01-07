@@ -8,7 +8,7 @@ import android.widget.Toast;
 import com.gooutinmetz.dao.CategoryService;
 import com.gooutinmetz.dao.SiteService;
 import com.gooutinmetz.CategoryActivity;
-import com.example.gooutinmetz.R;
+import com.gooutinmetz.R;
 import com.gooutinmetz.model.Category;
 
 public class DeleteCategoryListener implements View.OnClickListener {

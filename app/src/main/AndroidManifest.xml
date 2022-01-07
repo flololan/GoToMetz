@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.gooutinmetz">
+    package="com.gooutinmetz">
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -36,9 +36,9 @@
             android:value="@string/google_maps_key" />
         <!--android:exported: Needs to be added for Android 12-->
         <activity
-            android:name="com.example.gooutinmetz.com.gooutinmetz.MapsActivity"
-            android:label="@string/app_name"
-            android:exported="true">
+            android:name="com.gooutinmetz.MapsActivity"
+            android:exported="true"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -46,30 +46,30 @@
         </activity>
 
         <activity
-            android:name="com.example.gooutinmetz.com.gooutinmetz.SiteActivity"
+            android:name="com.gooutinmetz.SiteActivity"
             android:label="@string/site" />
 
         <activity
-            android:name="com.example.gooutinmetz.com.gooutinmetz.CategoryActivity"
+            android:name="com.gooutinmetz.CategoryActivity"
             android:label="@string/category" />
 
         <activity
-            android:name="com.example.gooutinmetz.com.gooutinmetz.Menu"
+            android:name="com.gooutinmetz.Menu"
             android:label="@string/menu" />
 
         <activity
-            android:name="com.example.gooutinmetz.com.gooutinmetz.form.CategoryForm"
+            android:name="com.gooutinmetz.form.CategoryForm"
             android:label="@string/form" />
 
         <activity
-            android:name="com.example.gooutinmetz.com.gooutinmetz.form.SiteForm"
+            android:name="com.gooutinmetz.form.SiteForm"
             android:label="@string/form" />
 
         <provider
+            android:name="com.gooutinmetz.provider.CategoryProvider"
             android:authorities="com.example.gotometz.provider"
-            android:name="com.example.gooutinmetz.com.gooutinmetz.provider.CategoryProvider"
-            android:exported="true"
             android:enabled="true"
+            android:exported="true"
             tools:ignore="ExportedContentProvider" />
 
     </application>

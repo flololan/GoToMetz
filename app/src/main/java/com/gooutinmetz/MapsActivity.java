@@ -27,7 +27,7 @@ import com.gooutinmetz.dao.CategoryService;
 import com.gooutinmetz.dao.SiteService;
 import com.gooutinmetz.map.MyMapListener;
 import com.gooutinmetz.map.SearchSiteListener;
-import com.example.gooutinmetz.R;
+import com.gooutinmetz.R;
 import com.gooutinmetz.map.MarkerDescription;
 import com.gooutinmetz.map.SearchSiteDialog;
 import com.gooutinmetz.model.Category;

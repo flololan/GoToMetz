@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import com.gooutinmetz.MapsActivity;
 import com.gooutinmetz.dao.CategoryService;
 import com.gooutinmetz.model.Category;
-import com.example.gooutinmetz.R;
+import com.gooutinmetz.R;
 
 import java.util.List;
 

@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 
 import com.gooutinmetz.SiteActivity;
 import com.gooutinmetz.dao.SiteService;
-import com.example.gooutinmetz.R;
+import com.gooutinmetz.R;
 import com.gooutinmetz.model.Site;
 
 import java.util.List;

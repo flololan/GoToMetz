@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.gooutinmetz.SiteActivity;
 import com.gooutinmetz.dao.SiteService;
-import com.example.gooutinmetz.R;
+import com.gooutinmetz.R;
 import com.gooutinmetz.model.Site;
 
 public class DeleteSiteListener implements View.OnClickListener {

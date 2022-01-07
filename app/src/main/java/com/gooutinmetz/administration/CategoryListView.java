@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import com.gooutinmetz.dao.CategoryService;
 import com.gooutinmetz.dao.SiteService;
 import com.gooutinmetz.CategoryActivity;
-import com.example.gooutinmetz.R;
+import com.gooutinmetz.R;
 import com.gooutinmetz.model.Category;
 
 import java.util.List;

@@ -12,7 +12,7 @@ import com.gooutinmetz.administration.CategoryListView;
 import com.gooutinmetz.administration.DisplayCategoryFormListener;
 import com.gooutinmetz.dao.CategoryService;
 import com.gooutinmetz.model.Category;
-import com.example.gooutinmetz.R;
+import com.gooutinmetz.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;

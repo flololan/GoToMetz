@@ -17,7 +17,7 @@ import com.gooutinmetz.model.Site;
 public class SiteProvider extends ContentProvider {
 
     // FOR DATA
-    public static final String AUTHORITY = "com.example.gooutinmetz.provider";
+    public static final String AUTHORITY = "com.gooutinmetzprovider";
     public static final String TABLE_NAME = Site.class.getSimpleName();
 
     // The site service
