@@ -22,7 +22,6 @@ public class MarkerDescription implements GoogleMap.InfoWindowAdapter {
         return null;
     }
 
-    @SuppressLint("InflateParams")
     @Override
     public View getInfoContents(Marker marker) {
         if (markerModal == null)

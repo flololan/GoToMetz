@@ -4,27 +4,27 @@ import android.content.Intent;
 import android.view.View;
 
 import com.gooutinmetz.form.SiteForm;
-import com.gooutinmetz.map.MyMapListener;
+import com.gooutinmetz.map.MapClickListener;
 import com.google.android.gms.maps.model.LatLng;
 
 public class StateAddSite extends StateController {
 
-    public StateAddSite(MyMapListener myMapListener, StateController next) {
-        super(myMapListener, next);
+    public StateAddSite(MapClickListener mapClickListener, StateController next) {
+        super(mapClickListener, next);
     }
 
     @Override
     public void onClick(View v) {
-        if (v == this.myMapListener.activity.addSiteBTN) return;
+        if (v == this.mapClickListener.activity.addSiteBTN) return;
 
-        this.myMapListener.currentState = this.next;
+        this.mapClickListener.currentState = this.next;
     }
 
     @Override
     public void onMapClick(LatLng latLng) {
-        Intent intent = new Intent(myMapListener.activity, SiteForm.class);
+        Intent intent = new Intent(mapClickListener.activity, SiteForm.class);
         intent.putExtra("latitudeForMap", latLng.latitude);
         intent.putExtra("longitudeForMap", latLng.longitude);
-        myMapListener.activity.startActivityForResult(intent, 1);
+        mapClickListener.activity.startActivityForResult(intent, 1);
     }
 }

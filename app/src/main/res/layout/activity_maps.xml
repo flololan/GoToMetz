@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.gooutinmetz.map.MapsActivity">
+    tools:context="com.gooutinmetz.map.MapActivity">
 
     <fragment
         xmlns:map="http://schemas.android.com/apk/res-auto"

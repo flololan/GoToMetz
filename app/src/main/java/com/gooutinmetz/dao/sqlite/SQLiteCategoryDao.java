@@ -5,13 +5,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-import com.gooutinmetz.dao.ServiceDAO;
+import com.gooutinmetz.dao.DAOService;
 import com.gooutinmetz.category.CategoryModel;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class SQLiteCategoryDao extends SQLiteDao<CategoryModel> implements ServiceDAO<CategoryModel> {
+public class SQLiteCategoryDao extends SQLiteDao<CategoryModel> implements DAOService<CategoryModel> {
 
     @SuppressLint("StaticFieldLeak")
     private static SQLiteCategoryDao instance;

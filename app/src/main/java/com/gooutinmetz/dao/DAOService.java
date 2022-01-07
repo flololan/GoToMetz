@@ -4,7 +4,7 @@ import android.database.Cursor;
 
 import java.util.List;
 
-public interface ServiceDAO<T> {
+public interface DAOService<T> {
 
     long create(T object);
 

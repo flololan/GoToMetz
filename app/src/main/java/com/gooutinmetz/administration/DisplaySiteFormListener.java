@@ -6,7 +6,7 @@ import android.location.Location;
 import android.view.View;
 
 import com.gooutinmetz.form.SiteForm;
-import com.gooutinmetz.map.MapsActivity;
+import com.gooutinmetz.map.MapActivity;
 import com.gooutinmetz.site.SiteModel;
 
 public class DisplaySiteFormListener implements View.OnClickListener {
@@ -29,8 +29,8 @@ public class DisplaySiteFormListener implements View.OnClickListener {
             intent.putExtra("postalAddress", site.getPostalAddress());
             intent.putExtra("categoryId", site.getCategory().getId());
             intent.putExtra("summary", site.getSummary());
-        } else if (activity instanceof MapsActivity) {
-            Location phonePos = ((MapsActivity) activity).getUserLocation();
+        } else if (activity instanceof MapActivity) {
+            Location phonePos = ((MapActivity) activity).getUserLocation();
             if (phonePos.getLatitude() < 1){
                 System.out.println("Fehler bei der Localisierung");
             }

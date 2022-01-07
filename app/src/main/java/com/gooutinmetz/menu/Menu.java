@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import com.gooutinmetz.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.gooutinmetz.category.CategoryActivity;
-import com.gooutinmetz.map.MapsActivity;
+import com.gooutinmetz.map.MapActivity;
 import com.gooutinmetz.site.SiteActivity;
 
 public class Menu implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -19,7 +19,7 @@ public class Menu implements BottomNavigationView.OnNavigationItemSelectedListen
     public Menu(Context context) {
         this.context = context;
 
-        mapIntent = new Intent(this.context, MapsActivity.class);
+        mapIntent = new Intent(this.context, MapActivity.class);
         siteIntent = new Intent(this.context, SiteActivity.class);
         categoryIntent = new Intent(this.context, CategoryActivity.class);
     }

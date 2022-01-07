@@ -8,16 +8,16 @@ import com.gooutinmetz.map.state.StateSearchSite;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 
-public class MyMapListener implements GoogleMap.OnMapClickListener, View.OnClickListener {
+public class MapClickListener implements GoogleMap.OnMapClickListener, View.OnClickListener {
 
-    public MapsActivity activity;
+    public MapActivity activity;
 
     public StateSearchSite stateSearchSite;
     public StateAddSite stateAddSite;
 
     public StateController currentState;
 
-    public MyMapListener(MapsActivity activity) {
+    public MapClickListener(MapActivity activity) {
         this.activity = activity;
 
         activity.searchSiteBTN.setOnClickListener(this);

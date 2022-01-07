@@ -8,7 +8,7 @@ import com.gooutinmetz.category.CategoryModel;
 
 import java.util.List;
 
-public class CategoryService implements ServiceDAO<CategoryModel> {
+public class CategoryService implements DAOService<CategoryModel> {
 
     private static CategoryService instance;
     private SQLiteCategoryDao sqLiteCategoryDao;

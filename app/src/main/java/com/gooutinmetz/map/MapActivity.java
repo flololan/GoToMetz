@@ -39,7 +39,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, SearchSiteDialog.SearchModalDialogListener, LocationListener {
+public class MapActivity extends AppCompatActivity implements OnMapReadyCallback, SearchSiteDialog.SearchModalDialogListener, LocationListener {
 
     public GoogleMap mMap;
 
@@ -58,7 +58,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private CategoryModel searchedCategory;
     private int searchedRadius;
 
-    public MyMapListener myMapListener;
+    public MapClickListener mapClickListener;
     public Button searchSiteBTN;
     public Button addSiteBTN;
 
@@ -115,7 +115,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         //Si la permission de localisation est accordée
         if (requestCode == 1 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            MapsActivity.permissions++;
+            MapActivity.permissions++;
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -124,19 +124,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
         } else
         if (requestCode != 3)
-            MapsActivity.permissions++;
+            MapActivity.permissions++;
 
-        if (MapsActivity.permissions == 2) {
+        if (MapActivity.permissions == 2) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
                     != PackageManager.PERMISSION_GRANTED) {
                 //Si la permission de lire dans le fichier est accordée
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 3);
             } else
-                MapsActivity.permissions++;
+                MapActivity.permissions++;
         }
 
-        if (MapsActivity.permissions == 3)
+        if (MapActivity.permissions == 3)
             run();
     }
 
@@ -198,7 +198,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mMap.setInfoWindowAdapter(new MarkerDescription(getLayoutInflater()));
 
-        this.myMapListener = new MyMapListener(this);
+        this.mapClickListener = new MapClickListener(this);
     }
 
     @Override

@@ -9,7 +9,7 @@ import com.gooutinmetz.site.SiteModel;
 
 import java.util.List;
 
-public class SiteService implements ServiceDAO<SiteModel>{
+public class SiteService implements DAOService<SiteModel> {
 
     private static SiteService instance;
     private SQLiteSiteDao sqLiteSiteDao;

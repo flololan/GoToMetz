@@ -2,16 +2,16 @@ package com.gooutinmetz.map.state;
 
 import android.view.View;
 
-import com.gooutinmetz.map.MyMapListener;
+import com.gooutinmetz.map.MapClickListener;
 import com.google.android.gms.maps.model.LatLng;
 
 public abstract class StateController {
 
-    public MyMapListener myMapListener;
+    public MapClickListener mapClickListener;
     public StateController next;
 
-    public StateController(MyMapListener myMapListener, StateController next) {
-        this.myMapListener = myMapListener;
+    public StateController(MapClickListener mapClickListener, StateController next) {
+        this.mapClickListener = mapClickListener;
         this.next = next;
     }
 

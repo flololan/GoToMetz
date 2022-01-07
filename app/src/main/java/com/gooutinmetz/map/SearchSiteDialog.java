@@ -22,13 +22,13 @@ import java.util.List;
 
 public class SearchSiteDialog extends AppCompatDialogFragment {
 
-    private MapsActivity mapsActivity;
+    private MapActivity mapActivity;
     private Location location;
 
     private SearchModalDialogListener listener;
 
-    public SearchSiteDialog(MapsActivity mapsActivity, Location location) {
-        this.mapsActivity = mapsActivity;
+    public SearchSiteDialog(MapActivity mapActivity, Location location) {
+        this.mapActivity = mapActivity;
         this.location = location;
     }
 
@@ -50,8 +50,8 @@ public class SearchSiteDialog extends AppCompatDialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(mapsActivity);
-        LayoutInflater inflater = mapsActivity.getLayoutInflater();
+        AlertDialog.Builder builder = new AlertDialog.Builder(mapActivity);
+        LayoutInflater inflater = mapActivity.getLayoutInflater();
 
         View view = inflater.inflate(R.layout.search_site, null);
 
@@ -62,9 +62,9 @@ public class SearchSiteDialog extends AppCompatDialogFragment {
         siteLongitudeET.setText(String.valueOf(location.getLongitude()));
 
         final Spinner categorySPN = view.findViewById(R.id.siteCategorySPN);
-        CategoryService categoryDao = CategoryService.getInstance(mapsActivity);
+        CategoryService categoryDao = CategoryService.getInstance(mapActivity);
         List<CategoryModel> categories = categoryDao.findAll();
-        ArrayAdapter<CategoryModel> categoryAdapter = new ArrayAdapter<>(mapsActivity, android.R.layout.simple_spinner_item, categories);
+        ArrayAdapter<CategoryModel> categoryAdapter = new ArrayAdapter<>(mapActivity, android.R.layout.simple_spinner_item, categories);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySPN.setAdapter(categoryAdapter);
 

@@ -3,21 +3,21 @@ package com.gooutinmetz.map.state;
 import android.location.Location;
 import android.view.View;
 
-import com.gooutinmetz.map.MyMapListener;
+import com.gooutinmetz.map.MapClickListener;
 import com.gooutinmetz.map.SearchSiteDialog;
 import com.google.android.gms.maps.model.LatLng;
 
 public class StateSearchSite extends StateController {
 
-    public StateSearchSite(MyMapListener myMapListener, StateController next) {
-        super(myMapListener, next);
+    public StateSearchSite(MapClickListener mapClickListener, StateController next) {
+        super(mapClickListener, next);
     }
 
     @Override
     public void onClick(View v) {
-        if (v == this.myMapListener.activity.searchSiteBTN) return;
+        if (v == this.mapClickListener.activity.searchSiteBTN) return;
 
-        this.myMapListener.currentState = this.next;
+        this.mapClickListener.currentState = this.next;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class StateSearchSite extends StateController {
         Location location = new Location("");
         location.setLatitude(latLng.latitude);
         location.setLongitude(latLng.longitude);
-        SearchSiteDialog searchSiteDialog = new SearchSiteDialog(myMapListener.activity, location);
-        searchSiteDialog.show(myMapListener.activity.getSupportFragmentManager(), "search");
+        SearchSiteDialog searchSiteDialog = new SearchSiteDialog(mapClickListener.activity, location);
+        searchSiteDialog.show(mapClickListener.activity.getSupportFragmentManager(), "search");
     }
 }
