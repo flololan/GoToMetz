@@ -32,7 +32,7 @@ public class DisplaySiteFormListener implements View.OnClickListener {
         } else if (activity instanceof MapActivity) {
             Location phonePos = ((MapActivity) activity).getUserLocation();
             if (phonePos.getLatitude() < 1){
-                System.out.println("Fehler bei der Localisierung");
+                System.out.println("Error while getting the localisation (latitude)");
             }
             else{
                 try {
