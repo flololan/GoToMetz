@@ -21,7 +21,7 @@
     <string name="addCategory">Add a category</string>
     <string name="updateCategory">Update a category</string>
     <string name="labelCategory">Category label</string>
-    <string name="hintCategory">Restaurant, </string>
+    <string name="hintCategory">Restaurant, Cafe, Bakery, Event...</string>
 
     <!--  Other  -->
     <string name="map">Map</string>
