@@ -1,4 +1,4 @@
-package com.gooutinmetz.form;
+package com.gooutinmetz.site.update;
 
 import android.content.Intent;
 import android.view.View;

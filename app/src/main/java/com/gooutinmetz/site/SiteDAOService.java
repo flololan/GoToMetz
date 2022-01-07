@@ -1,26 +1,25 @@
-package com.gooutinmetz.dao;
+package com.gooutinmetz.site;
 
 import android.content.Context;
 import android.database.Cursor;
 
-import com.gooutinmetz.dao.sqlite.SQLiteSiteDao;
 import com.gooutinmetz.category.CategoryModel;
-import com.gooutinmetz.site.SiteModel;
+import com.gooutinmetz.db.DAOService;
 
 import java.util.List;
 
-public class SiteService implements DAOService<SiteModel> {
+public class SiteDAOService implements DAOService<SiteModel> {
 
-    private static SiteService instance;
+    private static SiteDAOService instance;
     private SQLiteSiteDao sqLiteSiteDao;
 
-    private SiteService(Context context){
+    private SiteDAOService(Context context){
         sqLiteSiteDao = SQLiteSiteDao.getInstance(context);
     }
 
-    public static SiteService getInstance(Context context) {
+    public static SiteDAOService getInstance(Context context) {
         if (instance == null)
-            instance = new SiteService(context);
+            instance = new SiteDAOService(context);
         return instance;
     }
 

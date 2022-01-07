@@ -11,8 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import com.gooutinmetz.dao.SiteService;
-
 public class SiteProvider extends ContentProvider {
 
     // FOR DATA
@@ -20,11 +18,11 @@ public class SiteProvider extends ContentProvider {
     public static final String TABLE_NAME = SiteModel.class.getSimpleName();
 
     // The site service
-    private SiteService siteService;
+    private SiteDAOService siteDAOService;
 
     @Override
     public boolean onCreate() {
-        this.siteService = SiteService.getInstance(getContext());
+        this.siteDAOService = SiteDAOService.getInstance(getContext());
 
         return true;
     }
@@ -36,7 +34,7 @@ public class SiteProvider extends ContentProvider {
         if (getContext() != null) {
             long id = ContentUris.parseId(uri);
 
-            final Cursor cursor = this.siteService.getWithCursor(id);
+            final Cursor cursor = this.siteDAOService.getWithCursor(id);
             cursor.setNotificationUri(requireContext().getContentResolver(), uri);
 
             return cursor;
@@ -58,7 +56,7 @@ public class SiteProvider extends ContentProvider {
         final long id;
 
         if (contentValues != null) {
-            id = this.siteService.create(SiteModel.fromContentValues(contentValues));
+            id = this.siteDAOService.create(SiteModel.fromContentValues(contentValues));
 
             if (id != 0) {
                 requireContext().getContentResolver().notifyChange(uri, null);
@@ -72,7 +70,7 @@ public class SiteProvider extends ContentProvider {
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
-        final int count = this.siteService.delete(ContentUris.parseId(uri));
+        final int count = this.siteDAOService.delete(ContentUris.parseId(uri));
 
         requireContext().getContentResolver().notifyChange(uri, null);
 
@@ -83,7 +81,7 @@ public class SiteProvider extends ContentProvider {
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String selection, @Nullable String[] selectionArgs) {
         if (contentValues != null) {
-            final int count = this.siteService.update(SiteModel.fromContentValues(contentValues));
+            final int count = this.siteDAOService.update(SiteModel.fromContentValues(contentValues));
 
             requireContext().getContentResolver().notifyChange(uri, null);
 

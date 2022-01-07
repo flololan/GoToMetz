@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.gooutinmetz.site.SiteActivity;
-import com.gooutinmetz.dao.SiteService;
+import com.gooutinmetz.site.SiteDAOService;
 import com.gooutinmetz.R;
 import com.gooutinmetz.site.SiteModel;
 
@@ -19,11 +19,11 @@ import java.util.List;
 
 public class SiteListView extends ArrayAdapter<SiteModel> {
     private SiteActivity siteActivity;
-    private SiteService siteService;
+    private SiteDAOService siteDAOService;
 
     public SiteListView(SiteActivity siteActivity, List<SiteModel> sites) {
         super(siteActivity, 0, sites);
-        siteService = SiteService.getInstance(siteActivity);
+        siteDAOService = SiteDAOService.getInstance(siteActivity);
         this.siteActivity = siteActivity;
     }
 
@@ -43,7 +43,7 @@ public class SiteListView extends ArrayAdapter<SiteModel> {
             label.setText(site.getLabel());
             summary.setText(site.getSummary());
             update.setOnClickListener(new DisplaySiteFormListener(siteActivity, site));
-            delete.setOnClickListener(new DeleteSiteListener(siteActivity, this, site, siteService));
+            delete.setOnClickListener(new DeleteSiteListener(siteActivity, this, site, siteDAOService));
         }
 
         return view;

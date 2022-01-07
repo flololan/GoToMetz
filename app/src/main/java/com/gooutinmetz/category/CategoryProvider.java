@@ -11,8 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import com.gooutinmetz.dao.CategoryService;
-
 public class CategoryProvider extends ContentProvider {
 
     // FOR DATA
@@ -20,11 +18,11 @@ public class CategoryProvider extends ContentProvider {
     public static final String TABLE_NAME = CategoryModel.class.getSimpleName();
 
     // The site service
-    private CategoryService categoryService;
+    private CategoryDAOService categoryDAOService;
 
     @Override
     public boolean onCreate() {
-        this.categoryService = CategoryService.getInstance(getContext());
+        this.categoryDAOService = CategoryDAOService.getInstance(getContext());
 
         return true;
     }
@@ -36,7 +34,7 @@ public class CategoryProvider extends ContentProvider {
         if (getContext() != null) {
             long id = ContentUris.parseId(uri);
 
-            final Cursor cursor = this.categoryService.getWithCursor(id);
+            final Cursor cursor = this.categoryDAOService.getWithCursor(id);
             cursor.setNotificationUri(requireContext().getContentResolver(), uri);
 
             return cursor;
@@ -58,7 +56,7 @@ public class CategoryProvider extends ContentProvider {
         final long id;
 
         if (contentValues != null) {
-            id = this.categoryService.create(CategoryModel.fromContentValues(contentValues));
+            id = this.categoryDAOService.create(CategoryModel.fromContentValues(contentValues));
 
             if (id != 0) {
                 requireContext().getContentResolver().notifyChange(uri, null);
@@ -72,7 +70,7 @@ public class CategoryProvider extends ContentProvider {
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
-        final int count = this.categoryService.delete(ContentUris.parseId(uri));
+        final int count = this.categoryDAOService.delete(ContentUris.parseId(uri));
 
         requireContext().getContentResolver().notifyChange(uri, null);
 
@@ -83,7 +81,7 @@ public class CategoryProvider extends ContentProvider {
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String selection, @Nullable String[] selectionArgs) {
         if (contentValues != null) {
-            final int count = this.categoryService.update(CategoryModel.fromContentValues(contentValues));
+            final int count = this.categoryDAOService.update(CategoryModel.fromContentValues(contentValues));
 
             requireContext().getContentResolver().notifyChange(uri, null);
 

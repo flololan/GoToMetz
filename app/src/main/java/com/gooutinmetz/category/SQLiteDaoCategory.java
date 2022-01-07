@@ -1,30 +1,31 @@
-package com.gooutinmetz.dao.sqlite;
+package com.gooutinmetz.category;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-import com.gooutinmetz.dao.DAOService;
-import com.gooutinmetz.category.CategoryModel;
+import com.gooutinmetz.db.DatabaseHelper;
+import com.gooutinmetz.db.SQLiteDao;
+import com.gooutinmetz.db.DAOService;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class SQLiteCategoryDao extends SQLiteDao<CategoryModel> implements DAOService<CategoryModel> {
+public class SQLiteDaoCategory extends SQLiteDao<CategoryModel> implements DAOService<CategoryModel> {
 
     @SuppressLint("StaticFieldLeak")
-    private static SQLiteCategoryDao instance;
+    private static SQLiteDaoCategory instance;
 
     private static final String[] allColumns = { DatabaseHelper.COLUMN_ID_CAT, DatabaseHelper.COLUMN_LABEL };
 
-    public SQLiteCategoryDao(Context context) {
+    public SQLiteDaoCategory(Context context) {
         super(context);
     }
 
-    public static SQLiteCategoryDao getInstance(Context context) {
+    public static SQLiteDaoCategory getInstance(Context context) {
         if (instance == null)
-            instance = new SQLiteCategoryDao(context);
+            instance = new SQLiteDaoCategory(context);
 
         return instance;
     }

@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 
-import com.gooutinmetz.form.CategoryForm;
+import com.gooutinmetz.category.update.CategoryForm;
 import com.gooutinmetz.category.CategoryModel;
 
 public class DisplayCategoryFormListener implements View.OnClickListener {

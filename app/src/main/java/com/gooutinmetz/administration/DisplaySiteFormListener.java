@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.view.View;
 
-import com.gooutinmetz.form.SiteForm;
+import com.gooutinmetz.site.update.SiteForm;
 import com.gooutinmetz.map.MapActivity;
 import com.gooutinmetz.site.SiteModel;
 

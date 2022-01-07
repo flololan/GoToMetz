@@ -1,4 +1,4 @@
-package com.gooutinmetz.dao.sqlite;
+package com.gooutinmetz.db;
 
 import android.content.Context;
 import android.database.Cursor;

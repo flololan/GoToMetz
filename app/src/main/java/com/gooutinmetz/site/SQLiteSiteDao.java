@@ -1,13 +1,15 @@
-package com.gooutinmetz.dao.sqlite;
+package com.gooutinmetz.site;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-import com.gooutinmetz.dao.DAOService;
+import com.gooutinmetz.db.DatabaseHelper;
+import com.gooutinmetz.category.SQLiteDaoCategory;
+import com.gooutinmetz.db.SQLiteDao;
+import com.gooutinmetz.db.DAOService;
 import com.gooutinmetz.category.CategoryModel;
-import com.gooutinmetz.site.SiteModel;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -152,7 +154,7 @@ public class SQLiteSiteDao extends SQLiteDao<SiteModel> implements DAOService<Si
         return new SiteModel(cursor.getLong(0),
                 cursor.getString(1), cursor.getDouble(2),
                 cursor.getDouble(3), cursor.getString(4),
-                new CategoryModel(cursor.getLong(5), SQLiteCategoryDao.getInstance(this.context).findById(cursor.getLong(5)).getLabel()),
+                new CategoryModel(cursor.getLong(5), SQLiteDaoCategory.getInstance(this.context).findById(cursor.getLong(5)).getLabel()),
                 cursor.getString(6));
     }
 

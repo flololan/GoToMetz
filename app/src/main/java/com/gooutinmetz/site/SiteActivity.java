@@ -10,8 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.gooutinmetz.menu.Menu;
 import com.gooutinmetz.administration.DisplaySiteFormListener;
-import com.gooutinmetz.dao.CategoryService;
-import com.gooutinmetz.dao.SiteService;
+import com.gooutinmetz.category.CategoryDAOService;
 import com.gooutinmetz.R;
 import com.gooutinmetz.administration.SiteListView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -19,8 +18,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.List;
 
 public class SiteActivity extends AppCompatActivity {
-    private SiteService siteService;
-    private CategoryService categoryService;
+    private SiteDAOService siteDAOService;
+    private CategoryDAOService categoryDAOService;
     private List<SiteModel> siteList;
     private SiteListView siteListView;
     private ListView listView;
@@ -37,9 +36,9 @@ public class SiteActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new Menu(this));
 
         // Récupération des données de la base
-        siteService = SiteService.getInstance(this);
-        categoryService = CategoryService.getInstance(this);
-        siteList = siteService.findAll();
+        siteDAOService = SiteDAOService.getInstance(this);
+        categoryDAOService = CategoryDAOService.getInstance(this);
+        siteList = siteDAOService.findAll();
 
         // Remplit la liste des sites
         siteListView = new SiteListView(this, siteList);
@@ -61,19 +60,19 @@ public class SiteActivity extends AppCompatActivity {
             if (data.getLongExtra("id", -1) == -1) {
                 SiteModel site = new SiteModel(data.getStringExtra("label"), data.getDoubleExtra("latitude", 0),
                         data.getDoubleExtra("longitude", 0), data.getStringExtra("postalAddress"),
-                        categoryService.findById(data.getLongExtra("categoryId", -1)), data.getStringExtra("summary"));
-                site.setId(siteService.create(site));
+                        categoryDAOService.findById(data.getLongExtra("categoryId", -1)), data.getStringExtra("summary"));
+                site.setId(siteDAOService.create(site));
 
                 siteListView.add(site);
                 siteListView.notifyDataSetChanged();
             } else {
                 SiteModel site = new SiteModel(data.getLongExtra("id", -1), data.getStringExtra("label"),
                         data.getDoubleExtra("latitude", 0), data.getDoubleExtra("longitude", 0),
-                        data.getStringExtra("postalAddress"), categoryService.findById(data.getLongExtra("categoryId", -1)),
+                        data.getStringExtra("postalAddress"), categoryDAOService.findById(data.getLongExtra("categoryId", -1)),
                         data.getStringExtra("summary"));
 
-                siteService.update(site);
-                siteList = siteService.findAll();
+                siteDAOService.update(site);
+                siteList = siteDAOService.findAll();
                 siteListView = new SiteListView(this, siteList);
                 listView.setAdapter(siteListView);
             }

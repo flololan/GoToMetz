@@ -1,4 +1,4 @@
-package com.gooutinmetz.dao;
+package com.gooutinmetz.db;
 
 import android.database.Cursor;
 

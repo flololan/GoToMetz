@@ -1,4 +1,4 @@
-package com.gooutinmetz.form;
+package com.gooutinmetz.site.update;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -11,8 +11,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.gooutinmetz.R;
-import com.gooutinmetz.dao.CategoryService;
+import com.gooutinmetz.category.CategoryDAOService;
 import com.gooutinmetz.category.CategoryModel;
+import com.gooutinmetz.shared.CancelFormListener;
 
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class SiteForm extends AppCompatActivity {
         postalAddress = findViewById(R.id.sitePostalAddrET);
         summary = findViewById(R.id.siteSummaryET);
         category = findViewById(R.id.siteCategorySPN);
-        CategoryService categoryDao = CategoryService.getInstance(this);
+        CategoryDAOService categoryDao = CategoryDAOService.getInstance(this);
         List<CategoryModel> categories = categoryDao.findAll();
         ArrayAdapter<CategoryModel> categoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

@@ -1,4 +1,4 @@
-package com.gooutinmetz.form;
+package com.gooutinmetz.shared;
 
 import android.app.Activity;
 import android.content.Intent;

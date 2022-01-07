@@ -3,7 +3,7 @@ package com.gooutinmetz.map.state;
 import android.content.Intent;
 import android.view.View;
 
-import com.gooutinmetz.form.SiteForm;
+import com.gooutinmetz.site.update.SiteForm;
 import com.gooutinmetz.map.MapClickListener;
 import com.google.android.gms.maps.model.LatLng;
 

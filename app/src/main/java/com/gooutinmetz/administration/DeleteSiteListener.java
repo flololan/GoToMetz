@@ -5,21 +5,21 @@ import android.content.DialogInterface;
 import android.view.View;
 
 import com.gooutinmetz.site.SiteActivity;
-import com.gooutinmetz.dao.SiteService;
+import com.gooutinmetz.site.SiteDAOService;
 import com.gooutinmetz.R;
 import com.gooutinmetz.site.SiteModel;
 
 public class DeleteSiteListener implements View.OnClickListener {
     private SiteModel site;
     private SiteListView siteListView;
-    private SiteService siteService;
+    private SiteDAOService siteDAOService;
     private SiteActivity siteActivity;
 
-    public DeleteSiteListener(SiteActivity siteActivity, SiteListView siteListView, SiteModel site, SiteService siteService){
+    public DeleteSiteListener(SiteActivity siteActivity, SiteListView siteListView, SiteModel site, SiteDAOService siteDAOService){
         this.siteActivity = siteActivity;
         this.site = site;
         this.siteListView = siteListView;
-        this.siteService = siteService;
+        this.siteDAOService = siteDAOService;
     }
 
     @Override
@@ -31,7 +31,7 @@ public class DeleteSiteListener implements View.OnClickListener {
         });
         builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                siteService.delete(site.getId());
+                siteDAOService.delete(site.getId());
                 siteListView.remove(site);
                 siteListView.notifyDataSetChanged();
             }

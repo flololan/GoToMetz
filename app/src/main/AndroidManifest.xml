@@ -58,11 +58,11 @@
             android:label="@string/menu" />
 
         <activity
-            android:name="com.gooutinmetz.form.CategoryForm"
+            android:name="com.gooutinmetz.category.update.CategoryForm"
             android:label="@string/form" />
 
         <activity
-            android:name="com.gooutinmetz.form.SiteForm"
+            android:name="com.gooutinmetz.site.update.SiteForm"
             android:label="@string/form" />
 
         <provider
