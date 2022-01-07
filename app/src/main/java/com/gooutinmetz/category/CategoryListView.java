@@ -1,4 +1,4 @@
-package com.gooutinmetz.administration;
+package com.gooutinmetz.category;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.gooutinmetz.category.CategoryDAOService;
+import com.gooutinmetz.category.CategoryDaoService;
+import com.gooutinmetz.category.update.DeleteCategoryListener;
+import com.gooutinmetz.category.update.DisplayCategoryFormListener;
 import com.gooutinmetz.site.SiteDAOService;
 import com.gooutinmetz.category.CategoryActivity;
 import com.gooutinmetz.R;
@@ -20,13 +22,13 @@ import java.util.List;
 
 public class CategoryListView extends ArrayAdapter<CategoryModel> {
     private CategoryActivity categoryActivity;
-    private CategoryDAOService categoryDao;
+    private CategoryDaoService categoryDao;
     private SiteDAOService siteDao;
 
     public CategoryListView(CategoryActivity categoryActivity, List<CategoryModel> categories) {
         super(categoryActivity, 0, categories);
 
-        categoryDao = CategoryDAOService.getInstance(categoryActivity);
+        categoryDao = CategoryDaoService.getInstance(categoryActivity);
         siteDao = SiteDAOService.getInstance(categoryActivity);
         this.categoryActivity = categoryActivity;
     }

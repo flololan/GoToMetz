@@ -1,4 +1,4 @@
-package com.gooutinmetz.administration;
+package com.gooutinmetz.site.update;
 
 import android.app.Activity;
 import android.content.Intent;

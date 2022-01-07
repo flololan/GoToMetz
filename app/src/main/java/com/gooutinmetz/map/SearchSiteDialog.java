@@ -14,7 +14,7 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-import com.gooutinmetz.category.CategoryDAOService;
+import com.gooutinmetz.category.CategoryDaoService;
 import com.gooutinmetz.category.CategoryModel;
 import com.gooutinmetz.R;
 
@@ -62,7 +62,7 @@ public class SearchSiteDialog extends AppCompatDialogFragment {
         siteLongitudeET.setText(String.valueOf(location.getLongitude()));
 
         final Spinner categorySPN = view.findViewById(R.id.siteCategorySPN);
-        CategoryDAOService categoryDao = CategoryDAOService.getInstance(mapActivity);
+        CategoryDaoService categoryDao = CategoryDaoService.getInstance(mapActivity);
         List<CategoryModel> categories = categoryDao.findAll();
         ArrayAdapter<CategoryModel> categoryAdapter = new ArrayAdapter<>(mapActivity, android.R.layout.simple_spinner_item, categories);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

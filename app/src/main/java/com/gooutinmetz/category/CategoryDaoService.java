@@ -7,18 +7,18 @@ import com.gooutinmetz.db.DAOService;
 
 import java.util.List;
 
-public class CategoryDAOService implements DAOService<CategoryModel> {
+public class CategoryDaoService implements DAOService<CategoryModel> {
 
-    private static CategoryDAOService instance;
+    private static CategoryDaoService instance;
     private SQLiteDaoCategory sqLiteDaoCategory;
 
-    private CategoryDAOService(Context context){
+    private CategoryDaoService(Context context){
         sqLiteDaoCategory = SQLiteDaoCategory.getInstance(context);
     }
 
-    public static CategoryDAOService getInstance(Context context) {
+    public static CategoryDaoService getInstance(Context context) {
         if (instance == null)
-            instance = new CategoryDAOService(context);
+            instance = new CategoryDaoService(context);
         return instance;
     }
 

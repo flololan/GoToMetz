@@ -1,9 +1,10 @@
-package com.gooutinmetz.administration;
+package com.gooutinmetz.site.update;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.View;
 
+import com.gooutinmetz.site.SiteListView;
 import com.gooutinmetz.site.SiteActivity;
 import com.gooutinmetz.site.SiteDAOService;
 import com.gooutinmetz.R;

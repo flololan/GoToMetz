@@ -1,11 +1,12 @@
-package com.gooutinmetz.administration;
+package com.gooutinmetz.category.update;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.View;
 import android.widget.Toast;
 
-import com.gooutinmetz.category.CategoryDAOService;
+import com.gooutinmetz.category.CategoryListView;
+import com.gooutinmetz.category.CategoryDaoService;
 import com.gooutinmetz.site.SiteDAOService;
 import com.gooutinmetz.category.CategoryActivity;
 import com.gooutinmetz.R;
@@ -14,11 +15,11 @@ import com.gooutinmetz.category.CategoryModel;
 public class DeleteCategoryListener implements View.OnClickListener {
     private CategoryModel category;
     private CategoryListView categoryListView;
-    private CategoryDAOService categoryDAOService;
+    private CategoryDaoService categoryDAOService;
     private SiteDAOService siteDAOService;
     private CategoryActivity categoryActivity;
 
-    public DeleteCategoryListener(CategoryActivity activity, CategoryListView categoryListView, CategoryModel category, CategoryDAOService categoryDAOService, SiteDAOService siteDAOService) {
+    public DeleteCategoryListener(CategoryActivity activity, CategoryListView categoryListView, CategoryModel category, CategoryDaoService categoryDAOService, SiteDAOService siteDAOService) {
         this.categoryActivity = activity;
         this.category = category;
         this.siteDAOService = siteDAOService;

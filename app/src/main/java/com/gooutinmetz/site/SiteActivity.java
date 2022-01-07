@@ -9,17 +9,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.gooutinmetz.menu.Menu;
-import com.gooutinmetz.administration.DisplaySiteFormListener;
-import com.gooutinmetz.category.CategoryDAOService;
+import com.gooutinmetz.site.update.DisplaySiteFormListener;
+import com.gooutinmetz.category.CategoryDaoService;
 import com.gooutinmetz.R;
-import com.gooutinmetz.administration.SiteListView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
 public class SiteActivity extends AppCompatActivity {
     private SiteDAOService siteDAOService;
-    private CategoryDAOService categoryDAOService;
+    private CategoryDaoService categoryDAOService;
     private List<SiteModel> siteList;
     private SiteListView siteListView;
     private ListView listView;
@@ -37,7 +36,7 @@ public class SiteActivity extends AppCompatActivity {
 
         // Récupération des données de la base
         siteDAOService = SiteDAOService.getInstance(this);
-        categoryDAOService = CategoryDAOService.getInstance(this);
+        categoryDAOService = CategoryDaoService.getInstance(this);
         siteList = siteDAOService.findAll();
 
         // Remplit la liste des sites

@@ -1,4 +1,4 @@
-package com.gooutinmetz.administration;
+package com.gooutinmetz.site;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +14,8 @@ import com.gooutinmetz.site.SiteActivity;
 import com.gooutinmetz.site.SiteDAOService;
 import com.gooutinmetz.R;
 import com.gooutinmetz.site.SiteModel;
+import com.gooutinmetz.site.update.DeleteSiteListener;
+import com.gooutinmetz.site.update.DisplaySiteFormListener;
 
 import java.util.List;
 

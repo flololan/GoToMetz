@@ -12,17 +12,14 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 public class CategoryProvider extends ContentProvider {
-
-    // FOR DATA
     public static final String AUTHORITY = "com.gooutinmetzprovider";
     public static final String TABLE_NAME = CategoryModel.class.getSimpleName();
 
-    // The site service
-    private CategoryDAOService categoryDAOService;
+    private CategoryDaoService categoryDAOService;
 
     @Override
     public boolean onCreate() {
-        this.categoryDAOService = CategoryDAOService.getInstance(getContext());
+        this.categoryDAOService = CategoryDaoService.getInstance(getContext());
 
         return true;
     }

@@ -9,15 +9,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.gooutinmetz.menu.Menu;
-import com.gooutinmetz.administration.CategoryListView;
-import com.gooutinmetz.administration.DisplayCategoryFormListener;
+import com.gooutinmetz.category.update.DisplayCategoryFormListener;
 import com.gooutinmetz.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
 public class CategoryActivity extends AppCompatActivity {
-    private CategoryDAOService categoryDAOService;
+    private CategoryDaoService categoryDAOService;
     private List<CategoryModel> categoryList;
     private CategoryListView categoryListView;
     private ListView listView;
@@ -34,7 +33,7 @@ public class CategoryActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new Menu(this));
 
         // Récupération des données de la base
-        categoryDAOService = CategoryDAOService.getInstance(this);
+        categoryDAOService = CategoryDaoService.getInstance(this);
         categoryList = categoryDAOService.findAll();
 
         // Remplit la liste des catégories

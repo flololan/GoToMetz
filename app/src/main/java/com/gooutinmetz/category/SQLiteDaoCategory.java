@@ -33,7 +33,6 @@ public class SQLiteDaoCategory extends SQLiteDao<CategoryModel> implements DAOSe
     @Override
     public long create(CategoryModel category) {
         openWritable();
-
         ContentValues values = putContentValues(category);
 
         long lastInsertedId = sqLiteDatabase.insert(DatabaseHelper.TABLE_CATEGORY,
@@ -48,18 +47,20 @@ public class SQLiteDaoCategory extends SQLiteDao<CategoryModel> implements DAOSe
     @Override
     public int update(CategoryModel category) {
         openWritable();
-
         ContentValues values = putContentValues(category);
 
-        int returnedId = sqLiteDatabase.update(DatabaseHelper.TABLE_CATEGORY, values, DatabaseHelper.COLUMN_ID_CAT + " = ?", new String[] { String.valueOf(category.getId()) });
-
-        return returnedId;
+        return
+                sqLiteDatabase.update(
+                        DatabaseHelper.TABLE_CATEGORY,
+                        values,
+                        DatabaseHelper.COLUMN_ID_CAT + " = ?",
+                        new String[] { String.valueOf(category.getId()) }
+                );
     }
 
     @Override
     public int delete(long id) {
         openWritable();
-
         int returnedId = sqLiteDatabase.delete(DatabaseHelper.TABLE_CATEGORY,
                 DatabaseHelper.COLUMN_ID_CAT + " = ?",
                 new String[] { String.valueOf(id) });
@@ -72,7 +73,6 @@ public class SQLiteDaoCategory extends SQLiteDao<CategoryModel> implements DAOSe
     @Override
     public CategoryModel findById(long id) {
         openReadable();
-
         Cursor cursor = sqLiteDatabase.query(DatabaseHelper.TABLE_CATEGORY,
                 allColumns,
                 DatabaseHelper.COLUMN_ID_CAT + " = ?",
