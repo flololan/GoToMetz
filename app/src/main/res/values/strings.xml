@@ -39,6 +39,6 @@
     <string name="search">Start a research</string>
     <string name="distance">Distance (m)</string>
     <string name="hintDistance">100</string>
-    <string name="app_name" translatable="false">GoToMetz</string>
+    <string name="app_name" translatable="false">Go out in Metz</string>
     <string name="noPermissions">Please allow location and files and multimedia contents data sharing in the application\'s parameters !</string>
 </resources>
