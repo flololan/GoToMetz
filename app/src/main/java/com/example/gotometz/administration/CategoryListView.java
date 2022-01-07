@@ -36,7 +36,7 @@ public class CategoryListView extends ArrayAdapter<Category> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = convertView;
         if (view == null)
-            view = LayoutInflater.from(categoryActivity).inflate(R.layout.list_of_item_view, parent, false);
+            view = LayoutInflater.from(categoryActivity).inflate(R.layout.items_view, parent, false);
         TextView label = view.findViewById(R.id.itemLabelTV);
         TextView summary = view.findViewById(R.id.itemSummaryTV);
         Button update = view.findViewById(R.id.updateItemBTN);

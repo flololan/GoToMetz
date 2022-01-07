@@ -32,7 +32,7 @@ public class SiteListView extends ArrayAdapter<Site> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = convertView;
         if (view == null)
-            view = LayoutInflater.from(siteActivity).inflate(R.layout.list_of_item_view, parent, false);
+            view = LayoutInflater.from(siteActivity).inflate(R.layout.items_view, parent, false);
         Site site = getItem(position);
 
         TextView label = view.findViewById(R.id.itemLabelTV);

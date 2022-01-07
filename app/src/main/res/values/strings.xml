@@ -1,29 +1,29 @@
 <resources>
     <string name="title_activity_maps">Map</string>
 
-<!--  Site  -->
-    <string name="siteTitle">Sites list</string>
+    <!--  Site  -->
+    <string name="siteTitle">Site list</string>
     <string name="addSite">Add site</string>
     <string name="updateSite">Update site</string>
     <string name="labelSite">Site label</string>
-    <string name="hintSite">Le Paradis</string>
+    <string name="hintSite">Site name</string>
     <string name="latitude">Latitude</string>
-    <string name="hintLatitude">10</string>
+    <string name="hintLatitude">49.09469</string>
     <string name="longitude">Longitude</string>
-    <string name="hintLongitude">10</string>
+    <string name="hintLongitude">6.22971</string>
     <string name="postalAddress">Postal address</string>
-    <string name="hintPostalAddress">46 En Fournirue</string>
+    <string name="hintPostalAddress">3 rue Augustin Fresnel 57070 Metz</string>
     <string name="summary">Summary</string>
-    <string name="hintSummary">Restaurant well noted in Metz</string>
+    <string name="hintSummary">Summary of this site</string>
 
-<!--  Catégorie  -->
-    <string name="categoryTitle">Categories list</string>
-    <string name="addCategory">Add category</string>
-    <string name="updateCategory">Update category</string>
+    <!--  Categories  -->
+    <string name="categoryTitle">Category list</string>
+    <string name="addCategory">Add a category</string>
+    <string name="updateCategory">Update a category</string>
     <string name="labelCategory">Category label</string>
-    <string name="hintCategory">Restaurant</string>
+    <string name="hintCategory">Restaurant, </string>
 
-<!--  Autre  -->
+    <!--  Other  -->
     <string name="map">Map</string>
     <string name="site">Sites</string>
     <string name="category">Categories</string>
@@ -37,7 +37,7 @@
     <string name="warningDelete">This category is associated to a site. You cannot delete it</string>
     <string name="form">Form</string>
     <string name="search">Start a research</string>
-    <string name="distance">Distance</string>
+    <string name="distance">Distance (m)</string>
     <string name="hintDistance">100</string>
     <string name="app_name" translatable="false">GoToMetz</string>
     <string name="noPermissions">Please allow location and files and multimedia contents data sharing in the application\'s parameters !</string>

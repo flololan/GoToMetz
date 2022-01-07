@@ -71,7 +71,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Vérifie les permissions
+        //  Vérifie les permissions
         permissions = 0;
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -264,9 +264,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @SuppressLint("MissingPermission")
     private void locationInitialization() {
-
-
             locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+            if(locationManager == null) {
+                return;
+            }
             Criteria criteria = new Criteria();
             bestProvider = String.valueOf(locationManager.getBestProvider(criteria, true)).toString();
             locationManager.requestLocationUpdates(bestProvider, 1000, 0, this);
@@ -290,9 +291,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 if (userLocation != null)
                     this.onLocationChanged(userLocation);
             }
-
-
-
     }
 
     public Location getUserLocation() {
