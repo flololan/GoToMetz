@@ -4,7 +4,7 @@ import android.view.View;
 
 public class SearchSiteListener implements View.OnClickListener {
 
-    private MapActivity activity;
+    private final MapActivity activity;
 
     public SearchSiteListener(MapActivity activity) {
         this.activity = activity;
