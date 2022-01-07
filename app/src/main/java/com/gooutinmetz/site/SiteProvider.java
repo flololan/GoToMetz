@@ -18,11 +18,11 @@ public class SiteProvider extends ContentProvider {
     public static final String TABLE_NAME = SiteModel.class.getSimpleName();
 
     // The site service
-    private SiteDAOService siteDAOService;
+    private SiteDaoService siteDAOService;
 
     @Override
     public boolean onCreate() {
-        this.siteDAOService = SiteDAOService.getInstance(getContext());
+        this.siteDAOService = SiteDaoService.getInstance(getContext());
 
         return true;
     }

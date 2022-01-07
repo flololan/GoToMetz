@@ -6,17 +6,17 @@ import android.view.View;
 
 import com.gooutinmetz.site.SiteListView;
 import com.gooutinmetz.site.SiteActivity;
-import com.gooutinmetz.site.SiteDAOService;
+import com.gooutinmetz.site.SiteDaoService;
 import com.gooutinmetz.R;
 import com.gooutinmetz.site.SiteModel;
 
 public class DeleteSiteListener implements View.OnClickListener {
     private SiteModel site;
     private SiteListView siteListView;
-    private SiteDAOService siteDAOService;
+    private SiteDaoService siteDAOService;
     private SiteActivity siteActivity;
 
-    public DeleteSiteListener(SiteActivity siteActivity, SiteListView siteListView, SiteModel site, SiteDAOService siteDAOService){
+    public DeleteSiteListener(SiteActivity siteActivity, SiteListView siteListView, SiteModel site, SiteDaoService siteDAOService){
         this.siteActivity = siteActivity;
         this.site = site;
         this.siteListView = siteListView;

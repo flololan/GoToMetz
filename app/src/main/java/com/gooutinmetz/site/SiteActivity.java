@@ -17,7 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.List;
 
 public class SiteActivity extends AppCompatActivity {
-    private SiteDAOService siteDAOService;
+    private SiteDaoService siteDAOService;
     private CategoryDaoService categoryDAOService;
     private List<SiteModel> siteList;
     private SiteListView siteListView;
@@ -35,7 +35,7 @@ public class SiteActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new Menu(this));
 
         // Récupération des données de la base
-        siteDAOService = SiteDAOService.getInstance(this);
+        siteDAOService = SiteDaoService.getInstance(this);
         categoryDAOService = CategoryDaoService.getInstance(this);
         siteList = siteDAOService.findAll();
 

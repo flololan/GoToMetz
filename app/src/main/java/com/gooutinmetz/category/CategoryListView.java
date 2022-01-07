@@ -10,26 +10,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.gooutinmetz.category.CategoryDaoService;
 import com.gooutinmetz.category.update.DeleteCategoryListener;
 import com.gooutinmetz.category.update.DisplayCategoryFormListener;
-import com.gooutinmetz.site.SiteDAOService;
-import com.gooutinmetz.category.CategoryActivity;
+import com.gooutinmetz.site.SiteDaoService;
 import com.gooutinmetz.R;
-import com.gooutinmetz.category.CategoryModel;
 
 import java.util.List;
 
 public class CategoryListView extends ArrayAdapter<CategoryModel> {
     private CategoryActivity categoryActivity;
     private CategoryDaoService categoryDao;
-    private SiteDAOService siteDao;
+    private SiteDaoService siteDao;
 
     public CategoryListView(CategoryActivity categoryActivity, List<CategoryModel> categories) {
         super(categoryActivity, 0, categories);
 
         categoryDao = CategoryDaoService.getInstance(categoryActivity);
-        siteDao = SiteDAOService.getInstance(categoryActivity);
+        siteDao = SiteDaoService.getInstance(categoryActivity);
         this.categoryActivity = categoryActivity;
     }
 

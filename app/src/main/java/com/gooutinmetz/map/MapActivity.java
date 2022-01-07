@@ -25,7 +25,7 @@ import androidx.core.content.ContextCompat;
 import com.gooutinmetz.menu.Menu;
 import com.gooutinmetz.site.update.DisplaySiteFormListener;
 import com.gooutinmetz.category.CategoryDaoService;
-import com.gooutinmetz.site.SiteDAOService;
+import com.gooutinmetz.site.SiteDaoService;
 import com.gooutinmetz.R;
 import com.gooutinmetz.category.CategoryModel;
 import com.gooutinmetz.site.SiteModel;
@@ -48,7 +48,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private static int permissions = 0;
 
     private CategoryDaoService categoryDao;
-    private SiteDAOService siteDao;
+    private SiteDaoService siteDao;
 
     LocationManager locationManager = null;
     private String provider;
@@ -156,7 +156,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         //récupérer les données bdd via la DAO
         categoryDao = CategoryDaoService.getInstance(this);
-        siteDao = SiteDAOService.getInstance(this);
+        siteDao = SiteDaoService.getInstance(this);
 
         // Bouton listeners
 

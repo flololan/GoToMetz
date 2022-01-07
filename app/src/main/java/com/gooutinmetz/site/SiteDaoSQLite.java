@@ -6,7 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.gooutinmetz.db.DatabaseHelper;
-import com.gooutinmetz.category.SQLiteDaoCategory;
+import com.gooutinmetz.category.CategoryDaoSQLite;
 import com.gooutinmetz.db.SQLiteDao;
 import com.gooutinmetz.db.DAOService;
 import com.gooutinmetz.category.CategoryModel;
@@ -14,22 +14,22 @@ import com.gooutinmetz.category.CategoryModel;
 import java.util.LinkedList;
 import java.util.List;
 
-public class SQLiteSiteDao extends SQLiteDao<SiteModel> implements DAOService<SiteModel> {
+public class SiteDaoSQLite extends SQLiteDao<SiteModel> implements DAOService<SiteModel> {
 
     @SuppressLint("StaticFieldLeak")
-    private static SQLiteSiteDao instance;
+    private static SiteDaoSQLite instance;
 
     private static final String[] allColumns = { DatabaseHelper.COLUMN_ID_SITE, DatabaseHelper.COLUMN_NAME,
             DatabaseHelper.COLUMN_LATITUDE, DatabaseHelper.COLUMN_LONGITUDE, DatabaseHelper.COLUMN_POSTALADDR,
             DatabaseHelper.COLUMN_CATEGORY_ID, DatabaseHelper.COLUMN_SUMMARY };
 
-    public SQLiteSiteDao(Context context) {
+    public SiteDaoSQLite(Context context) {
         super(context);
     }
 
-    public static SQLiteSiteDao getInstance(Context context) {
+    public static SiteDaoSQLite getInstance(Context context) {
         if (instance == null)
-            instance = new SQLiteSiteDao(context);
+            instance = new SiteDaoSQLite(context);
 
         return instance;
     }
@@ -154,7 +154,7 @@ public class SQLiteSiteDao extends SQLiteDao<SiteModel> implements DAOService<Si
         return new SiteModel(cursor.getLong(0),
                 cursor.getString(1), cursor.getDouble(2),
                 cursor.getDouble(3), cursor.getString(4),
-                new CategoryModel(cursor.getLong(5), SQLiteDaoCategory.getInstance(this.context).findById(cursor.getLong(5)).getLabel()),
+                new CategoryModel(cursor.getLong(5), CategoryDaoSQLite.getInstance(this.context).findById(cursor.getLong(5)).getLabel()),
                 cursor.getString(6));
     }
 

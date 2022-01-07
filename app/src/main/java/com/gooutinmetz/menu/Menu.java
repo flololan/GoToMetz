@@ -13,8 +13,10 @@ import com.gooutinmetz.map.MapActivity;
 import com.gooutinmetz.site.SiteActivity;
 
 public class Menu implements BottomNavigationView.OnNavigationItemSelectedListener {
-    private Context context;
-    private Intent mapIntent, categoryIntent, siteIntent;
+    private final Context context;
+    private final Intent mapIntent;
+    private final Intent categoryIntent;
+    private final Intent siteIntent;
 
     public Menu(Context context) {
         this.context = context;

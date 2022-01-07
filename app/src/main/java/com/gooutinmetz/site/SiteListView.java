@@ -18,11 +18,11 @@ import java.util.List;
 
 public class SiteListView extends ArrayAdapter<SiteModel> {
     private final SiteActivity siteActivity;
-    private final SiteDAOService siteDAOService;
+    private final SiteDaoService siteDAOService;
 
     public SiteListView(SiteActivity siteActivity, List<SiteModel> sites) {
         super(siteActivity, 0, sites);
-        siteDAOService = SiteDAOService.getInstance(siteActivity);
+        siteDAOService = SiteDaoService.getInstance(siteActivity);
         this.siteActivity = siteActivity;
     }
 

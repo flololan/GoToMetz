@@ -8,56 +8,56 @@ import com.gooutinmetz.db.DAOService;
 
 import java.util.List;
 
-public class SiteDAOService implements DAOService<SiteModel> {
+public class SiteDaoService implements DAOService<SiteModel> {
 
-    private static SiteDAOService instance;
-    private final SQLiteSiteDao sqLiteSiteDao;
+    private static SiteDaoService instance;
+    private final SiteDaoSQLite siteDaoSQLite;
 
-    private SiteDAOService(Context context){
-        sqLiteSiteDao = SQLiteSiteDao.getInstance(context);
+    private SiteDaoService(Context context){
+        siteDaoSQLite = SiteDaoSQLite.getInstance(context);
     }
 
-    public static SiteDAOService getInstance(Context context) {
+    public static SiteDaoService getInstance(Context context) {
         if (instance == null)
-            instance = new SiteDAOService(context);
+            instance = new SiteDaoService(context);
         return instance;
     }
 
     @Override
     public long create(SiteModel object) {
-        return sqLiteSiteDao.create(object);
+        return siteDaoSQLite.create(object);
     }
 
     @Override
     public int update(SiteModel object) {
-        return sqLiteSiteDao.update(object);
+        return siteDaoSQLite.update(object);
     }
 
     @Override
     public int delete(long id) {
-        return sqLiteSiteDao.delete(id);
+        return siteDaoSQLite.delete(id);
     }
 
     @Override
     public SiteModel findById(long id) {
-        return sqLiteSiteDao.findById(id);
+        return siteDaoSQLite.findById(id);
     }
 
     @Override
     public List<SiteModel> findAll() {
-        return sqLiteSiteDao.findAll();
+        return siteDaoSQLite.findAll();
     }
 
     @Override
     public Cursor getWithCursor(long id) {
-        return sqLiteSiteDao.getWithCursor(id);
+        return siteDaoSQLite.getWithCursor(id);
     }
 
     public List<SiteModel> findByCategory(CategoryModel category) {
-        return sqLiteSiteDao.findByCategory(category);
+        return siteDaoSQLite.findByCategory(category);
     }
 
     public boolean isCategoryUsed(CategoryModel category) {
-        return sqLiteSiteDao.isCategoryUsed(category);
+        return siteDaoSQLite.isCategoryUsed(category);
     }
 }
