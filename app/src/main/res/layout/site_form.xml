@@ -170,7 +170,6 @@
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:lines="5"
-        android:autofillHints=""
         android:hint="@string/hintSummary"
         android:layout_margin="20dp"
         android:textSize="14sp"
