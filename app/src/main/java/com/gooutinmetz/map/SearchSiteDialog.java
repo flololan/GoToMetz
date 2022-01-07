@@ -2,7 +2,6 @@ package com.gooutinmetz.map;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,19 +10,20 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.gooutinmetz.R;
 import com.gooutinmetz.category.CategoryDaoService;
 import com.gooutinmetz.category.CategoryModel;
-import com.gooutinmetz.R;
 
 import java.util.List;
 
 public class SearchSiteDialog extends AppCompatDialogFragment {
 
-    private MapActivity mapActivity;
-    private Location location;
+    private final MapActivity mapActivity;
+    private final Location location;
 
     private SearchModalDialogListener listener;
 
@@ -38,7 +38,7 @@ public class SearchSiteDialog extends AppCompatDialogFragment {
 
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         try {
             listener = (SearchModalDialogListener) context;
@@ -48,6 +48,7 @@ public class SearchSiteDialog extends AppCompatDialogFragment {
         }
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(mapActivity);
@@ -74,15 +75,9 @@ public class SearchSiteDialog extends AppCompatDialogFragment {
 
         builder.setTitle(R.string.search);
 
-        builder.setPositiveButton(R.string.search, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                listener.onDialogPositiveClick(location, (CategoryModel) categorySPN.getSelectedItem(), Integer.parseInt(radiusET.getText().toString()));
-            }
-        });
+        builder.setPositiveButton(R.string.search, (dialog, id) -> listener.onDialogPositiveClick(location, (CategoryModel) categorySPN.getSelectedItem(), Integer.parseInt(radiusET.getText().toString())));
 
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {}
-        });
+        builder.setNegativeButton(R.string.cancel, (dialog, id) -> {});
 
         return builder.create();
     }
