@@ -4,18 +4,18 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.View;
 
-import com.gooutinmetz.SiteActivity;
+import com.gooutinmetz.site.SiteActivity;
 import com.gooutinmetz.dao.SiteService;
 import com.gooutinmetz.R;
-import com.gooutinmetz.model.Site;
+import com.gooutinmetz.site.SiteModel;
 
 public class DeleteSiteListener implements View.OnClickListener {
-    private Site site;
+    private SiteModel site;
     private SiteListView siteListView;
     private SiteService siteService;
     private SiteActivity siteActivity;
 
-    public DeleteSiteListener(SiteActivity siteActivity, SiteListView siteListView, Site site, SiteService siteService){
+    public DeleteSiteListener(SiteActivity siteActivity, SiteListView siteListView, SiteModel site, SiteService siteService){
         this.siteActivity = siteActivity;
         this.site = site;
         this.siteListView = siteListView;

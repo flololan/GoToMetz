@@ -4,11 +4,11 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.gooutinmetz.dao.sqlite.SQLiteCategoryDao;
-import com.gooutinmetz.model.Category;
+import com.gooutinmetz.category.CategoryModel;
 
 import java.util.List;
 
-public class CategoryService implements ServiceDAO<Category> {
+public class CategoryService implements ServiceDAO<CategoryModel> {
 
     private static CategoryService instance;
     private SQLiteCategoryDao sqLiteCategoryDao;
@@ -24,12 +24,12 @@ public class CategoryService implements ServiceDAO<Category> {
     }
 
     @Override
-    public long create(Category object) {
+    public long create(CategoryModel object) {
         return sqLiteCategoryDao.create(object);
     }
 
     @Override
-    public int update(Category object) {
+    public int update(CategoryModel object) {
         return sqLiteCategoryDao.update(object);
     }
 
@@ -39,12 +39,12 @@ public class CategoryService implements ServiceDAO<Category> {
     }
 
     @Override
-    public Category findById(long id) {
+    public CategoryModel findById(long id) {
         return sqLiteCategoryDao.findById(id);
     }
 
     @Override
-    public List<Category> findAll() {
+    public List<CategoryModel> findAll() {
         return sqLiteCategoryDao.findAll();
     }
 

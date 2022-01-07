@@ -14,9 +14,8 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-import com.gooutinmetz.MapsActivity;
 import com.gooutinmetz.dao.CategoryService;
-import com.gooutinmetz.model.Category;
+import com.gooutinmetz.category.CategoryModel;
 import com.gooutinmetz.R;
 
 import java.util.List;
@@ -34,7 +33,7 @@ public class SearchSiteDialog extends AppCompatDialogFragment {
     }
 
     public interface SearchModalDialogListener {
-        void onDialogPositiveClick(Location location, Category category, int radius);
+        void onDialogPositiveClick(Location location, CategoryModel category, int radius);
     }
 
 
@@ -64,8 +63,8 @@ public class SearchSiteDialog extends AppCompatDialogFragment {
 
         final Spinner categorySPN = view.findViewById(R.id.siteCategorySPN);
         CategoryService categoryDao = CategoryService.getInstance(mapsActivity);
-        List<Category> categories = categoryDao.findAll();
-        ArrayAdapter<Category> categoryAdapter = new ArrayAdapter<>(mapsActivity, android.R.layout.simple_spinner_item, categories);
+        List<CategoryModel> categories = categoryDao.findAll();
+        ArrayAdapter<CategoryModel> categoryAdapter = new ArrayAdapter<>(mapsActivity, android.R.layout.simple_spinner_item, categories);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySPN.setAdapter(categoryAdapter);
 
@@ -77,7 +76,7 @@ public class SearchSiteDialog extends AppCompatDialogFragment {
 
         builder.setPositiveButton(R.string.search, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                listener.onDialogPositiveClick(location, (Category) categorySPN.getSelectedItem(), Integer.parseInt(radiusET.getText().toString()));
+                listener.onDialogPositiveClick(location, (CategoryModel) categorySPN.getSelectedItem(), Integer.parseInt(radiusET.getText().toString()));
             }
         });
 

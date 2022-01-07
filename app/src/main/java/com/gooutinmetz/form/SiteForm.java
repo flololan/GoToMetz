@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.gooutinmetz.R;
 import com.gooutinmetz.dao.CategoryService;
-import com.gooutinmetz.model.Category;
+import com.gooutinmetz.category.CategoryModel;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class SiteForm extends AppCompatActivity {
     private Spinner category;
     private boolean isAdding = true;
 
-    @SuppressLint({"SetTextI18n", "MissingPermission"})
+    @SuppressLint({"MissingPermission"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +45,8 @@ public class SiteForm extends AppCompatActivity {
         summary = findViewById(R.id.siteSummaryET);
         category = findViewById(R.id.siteCategorySPN);
         CategoryService categoryDao = CategoryService.getInstance(this);
-        List<Category> categories = categoryDao.findAll();
-        ArrayAdapter<Category> categoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
+        List<CategoryModel> categories = categoryDao.findAll();
+        ArrayAdapter<CategoryModel> categoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         category.setAdapter(categoryAdapter);
 

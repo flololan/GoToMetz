@@ -6,13 +6,13 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.gooutinmetz.dao.ServiceDAO;
-import com.gooutinmetz.model.Category;
-import com.gooutinmetz.model.Site;
+import com.gooutinmetz.category.CategoryModel;
+import com.gooutinmetz.site.SiteModel;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class SQLiteSiteDao extends SQLiteDao<Site> implements ServiceDAO<Site> {
+public class SQLiteSiteDao extends SQLiteDao<SiteModel> implements ServiceDAO<SiteModel> {
 
     @SuppressLint("StaticFieldLeak")
     private static SQLiteSiteDao instance;
@@ -33,7 +33,7 @@ public class SQLiteSiteDao extends SQLiteDao<Site> implements ServiceDAO<Site> {
     }
 
     @Override
-    public long create(Site site) {
+    public long create(SiteModel site) {
         openWritable();
 
         ContentValues values = putContentValues(site);
@@ -48,7 +48,7 @@ public class SQLiteSiteDao extends SQLiteDao<Site> implements ServiceDAO<Site> {
     }
 
     @Override
-    public int update(Site site) {
+    public int update(SiteModel site) {
         openWritable();
 
         ContentValues values = putContentValues(site);
@@ -70,7 +70,7 @@ public class SQLiteSiteDao extends SQLiteDao<Site> implements ServiceDAO<Site> {
     }
 
     @Override
-    public Site findById(long id) {
+    public SiteModel findById(long id) {
         openReadable();
 
         Cursor cursor = sqLiteDatabase.query(DatabaseHelper.TABLE_SITE,
@@ -81,7 +81,7 @@ public class SQLiteSiteDao extends SQLiteDao<Site> implements ServiceDAO<Site> {
 
         cursor.moveToFirst();
 
-        Site site = cursorToObject(cursor);
+        SiteModel site = cursorToObject(cursor);
 
         cursor.close();
 
@@ -91,16 +91,16 @@ public class SQLiteSiteDao extends SQLiteDao<Site> implements ServiceDAO<Site> {
     }
 
     @Override
-    public List<Site> findAll() {
+    public List<SiteModel> findAll() {
         openReadable();
 
-        List<Site> sites = new LinkedList<>();
+        List<SiteModel> sites = new LinkedList<>();
 
         String query = "SELECT  * FROM " + DatabaseHelper.TABLE_SITE;
 
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
 
-        Site site;
+        SiteModel site;
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             site = cursorToObject(cursor);
@@ -115,10 +115,10 @@ public class SQLiteSiteDao extends SQLiteDao<Site> implements ServiceDAO<Site> {
         return sites;
     }
 
-    public List<Site> findByCategory(Category category) {
+    public List<SiteModel> findByCategory(CategoryModel category) {
         openReadable();
 
-        List<Site> sites = new LinkedList<>();
+        List<SiteModel> sites = new LinkedList<>();
 
         Cursor cursor = sqLiteDatabase.query(DatabaseHelper.TABLE_SITE,
                 allColumns,
@@ -126,7 +126,7 @@ public class SQLiteSiteDao extends SQLiteDao<Site> implements ServiceDAO<Site> {
                 new String[] { String.valueOf(category.getId()) },
                 null, null, null, null);
 
-        Site site;
+        SiteModel site;
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             site = cursorToObject(cursor);
@@ -148,15 +148,15 @@ public class SQLiteSiteDao extends SQLiteDao<Site> implements ServiceDAO<Site> {
     }
 
     @Override
-    public Site cursorToObject(Cursor cursor) {
-        return new Site(cursor.getLong(0),
+    public SiteModel cursorToObject(Cursor cursor) {
+        return new SiteModel(cursor.getLong(0),
                 cursor.getString(1), cursor.getDouble(2),
                 cursor.getDouble(3), cursor.getString(4),
-                new Category(cursor.getLong(5), SQLiteCategoryDao.getInstance(this.context).findById(cursor.getLong(5)).getLabel()),
+                new CategoryModel(cursor.getLong(5), SQLiteCategoryDao.getInstance(this.context).findById(cursor.getLong(5)).getLabel()),
                 cursor.getString(6));
     }
 
-    public boolean isCategoryUsed(Category category) {
+    public boolean isCategoryUsed(CategoryModel category) {
         openReadable();
 
         Cursor cursor = sqLiteDatabase.query(DatabaseHelper.TABLE_SITE,
@@ -174,7 +174,7 @@ public class SQLiteSiteDao extends SQLiteDao<Site> implements ServiceDAO<Site> {
         return result;
     }
 
-    private ContentValues putContentValues(Site site) {
+    private ContentValues putContentValues(SiteModel site) {
         ContentValues values = new ContentValues();
 
         values.put(DatabaseHelper.COLUMN_NAME, site.getLabel());

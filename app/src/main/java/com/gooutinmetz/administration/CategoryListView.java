@@ -12,18 +12,18 @@ import androidx.annotation.Nullable;
 
 import com.gooutinmetz.dao.CategoryService;
 import com.gooutinmetz.dao.SiteService;
-import com.gooutinmetz.CategoryActivity;
+import com.gooutinmetz.category.CategoryActivity;
 import com.gooutinmetz.R;
-import com.gooutinmetz.model.Category;
+import com.gooutinmetz.category.CategoryModel;
 
 import java.util.List;
 
-public class CategoryListView extends ArrayAdapter<Category> {
+public class CategoryListView extends ArrayAdapter<CategoryModel> {
     private CategoryActivity categoryActivity;
     private CategoryService categoryDao;
     private SiteService siteDao;
 
-    public CategoryListView(CategoryActivity categoryActivity, List<Category> categories) {
+    public CategoryListView(CategoryActivity categoryActivity, List<CategoryModel> categories) {
         super(categoryActivity, 0, categories);
 
         categoryDao = CategoryService.getInstance(categoryActivity);
@@ -42,7 +42,7 @@ public class CategoryListView extends ArrayAdapter<Category> {
         Button update = view.findViewById(R.id.updateItemBTN);
         Button delete = view.findViewById(R.id.deleteItemBTN);
 
-        Category category = getItem(position);
+        CategoryModel category = getItem(position);
         assert category != null;
         label.setText(category.getLabel());
         summary.setVisibility(View.GONE);

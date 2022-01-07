@@ -6,12 +6,12 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.gooutinmetz.dao.ServiceDAO;
-import com.gooutinmetz.model.Category;
+import com.gooutinmetz.category.CategoryModel;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class SQLiteCategoryDao extends SQLiteDao<Category> implements ServiceDAO<Category> {
+public class SQLiteCategoryDao extends SQLiteDao<CategoryModel> implements ServiceDAO<CategoryModel> {
 
     @SuppressLint("StaticFieldLeak")
     private static SQLiteCategoryDao instance;
@@ -30,7 +30,7 @@ public class SQLiteCategoryDao extends SQLiteDao<Category> implements ServiceDAO
     }
 
     @Override
-    public long create(Category category) {
+    public long create(CategoryModel category) {
         openWritable();
 
         ContentValues values = putContentValues(category);
@@ -45,7 +45,7 @@ public class SQLiteCategoryDao extends SQLiteDao<Category> implements ServiceDAO
     }
 
     @Override
-    public int update(Category category) {
+    public int update(CategoryModel category) {
         openWritable();
 
         ContentValues values = putContentValues(category);
@@ -69,7 +69,7 @@ public class SQLiteCategoryDao extends SQLiteDao<Category> implements ServiceDAO
     }
 
     @Override
-    public Category findById(long id) {
+    public CategoryModel findById(long id) {
         openReadable();
 
         Cursor cursor = sqLiteDatabase.query(DatabaseHelper.TABLE_CATEGORY,
@@ -80,7 +80,7 @@ public class SQLiteCategoryDao extends SQLiteDao<Category> implements ServiceDAO
 
         cursor.moveToFirst();
 
-        Category category = cursorToObject(cursor);
+        CategoryModel category = cursorToObject(cursor);
 
         cursor.close();
 
@@ -90,16 +90,16 @@ public class SQLiteCategoryDao extends SQLiteDao<Category> implements ServiceDAO
     }
 
     @Override
-    public List<Category> findAll() {
+    public List<CategoryModel> findAll() {
         openReadable();
 
-        List<Category> categories = new LinkedList<>();
+        List<CategoryModel> categories = new LinkedList<>();
 
         String query = "SELECT  * FROM " + DatabaseHelper.TABLE_CATEGORY;
 
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
 
-        Category category;
+        CategoryModel category;
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             category = cursorToObject(cursor);
@@ -121,12 +121,12 @@ public class SQLiteCategoryDao extends SQLiteDao<Category> implements ServiceDAO
     }
 
     @Override
-    public Category cursorToObject(Cursor cursor) {
-        return new Category(cursor.getLong(0),
+    public CategoryModel cursorToObject(Cursor cursor) {
+        return new CategoryModel(cursor.getLong(0),
                 cursor.getString(1));
     }
 
-    private ContentValues putContentValues(Category category) {
+    private ContentValues putContentValues(CategoryModel category) {
         ContentValues values = new ContentValues();
 
         values.put(DatabaseHelper.COLUMN_LABEL, category.getLabel());

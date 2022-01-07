@@ -1,4 +1,4 @@
-package com.gooutinmetz.state;
+package com.gooutinmetz.map.state;
 
 import android.content.Intent;
 import android.view.View;

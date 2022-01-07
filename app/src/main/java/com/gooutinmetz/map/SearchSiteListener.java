@@ -2,8 +2,6 @@ package com.gooutinmetz.map;
 
 import android.view.View;
 
-import com.gooutinmetz.MapsActivity;
-
 public class SearchSiteListener implements View.OnClickListener {
 
     private MapsActivity activity;

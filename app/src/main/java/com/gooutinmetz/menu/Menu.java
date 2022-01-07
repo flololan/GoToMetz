@@ -1,4 +1,4 @@
-package com.gooutinmetz;
+package com.gooutinmetz.menu;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,9 @@ import androidx.annotation.NonNull;
 
 import com.gooutinmetz.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.gooutinmetz.category.CategoryActivity;
+import com.gooutinmetz.map.MapsActivity;
+import com.gooutinmetz.site.SiteActivity;
 
 public class Menu implements BottomNavigationView.OnNavigationItemSelectedListener {
     private Context context;

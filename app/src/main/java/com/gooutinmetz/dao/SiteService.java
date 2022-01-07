@@ -4,12 +4,12 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.gooutinmetz.dao.sqlite.SQLiteSiteDao;
-import com.gooutinmetz.model.Category;
-import com.gooutinmetz.model.Site;
+import com.gooutinmetz.category.CategoryModel;
+import com.gooutinmetz.site.SiteModel;
 
 import java.util.List;
 
-public class SiteService implements ServiceDAO<Site>{
+public class SiteService implements ServiceDAO<SiteModel>{
 
     private static SiteService instance;
     private SQLiteSiteDao sqLiteSiteDao;
@@ -25,12 +25,12 @@ public class SiteService implements ServiceDAO<Site>{
     }
 
     @Override
-    public long create(Site object) {
+    public long create(SiteModel object) {
         return sqLiteSiteDao.create(object);
     }
 
     @Override
-    public int update(Site object) {
+    public int update(SiteModel object) {
         return sqLiteSiteDao.update(object);
     }
 
@@ -40,12 +40,12 @@ public class SiteService implements ServiceDAO<Site>{
     }
 
     @Override
-    public Site findById(long id) {
+    public SiteModel findById(long id) {
         return sqLiteSiteDao.findById(id);
     }
 
     @Override
-    public List<Site> findAll() {
+    public List<SiteModel> findAll() {
         return sqLiteSiteDao.findAll();
     }
 
@@ -54,11 +54,11 @@ public class SiteService implements ServiceDAO<Site>{
         return sqLiteSiteDao.getWithCursor(id);
     }
 
-    public List<Site> findByCategory(Category category) {
+    public List<SiteModel> findByCategory(CategoryModel category) {
         return sqLiteSiteDao.findByCategory(category);
     }
 
-    public boolean isCategoryUsed(Category category) {
+    public boolean isCategoryUsed(CategoryModel category) {
         return sqLiteSiteDao.isCategoryUsed(category);
     }
 }

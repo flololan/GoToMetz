@@ -1,4 +1,4 @@
-package com.gooutinmetz.model;
+package com.gooutinmetz.category;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
@@ -7,20 +7,20 @@ import androidx.annotation.NonNull;
 
 import java.util.Objects;
 
-public class Category {
+public class CategoryModel {
 
     private long id;
     private String label;
 
-    public Category() {
+    public CategoryModel() {
     }
 
-    public Category(long id, String label) {
+    public CategoryModel(long id, String label) {
         this.setId(id);
         this.setLabel(label);
     }
 
-    public Category(String label) {
+    public CategoryModel(String label) {
         this.setLabel(label);
     }
 
@@ -51,7 +51,7 @@ public class Category {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Category category = (Category) o;
+        CategoryModel category = (CategoryModel) o;
         return id == category.id &&
                 Objects.equals(label, category.label);
     }
@@ -63,8 +63,8 @@ public class Category {
     }
 
 
-    public static Category fromContentValues(ContentValues values) {
-        final Category category = new Category();
+    public static CategoryModel fromContentValues(ContentValues values) {
+        final CategoryModel category = new CategoryModel();
 
         if (values.containsKey("id")) category.setId(values.getAsLong("id"));
         if (values.containsKey("label")) category.setLabel(values.getAsString("label"));

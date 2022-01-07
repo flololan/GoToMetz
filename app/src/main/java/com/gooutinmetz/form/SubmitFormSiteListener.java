@@ -3,7 +3,7 @@ package com.gooutinmetz.form;
 import android.content.Intent;
 import android.view.View;
 
-import com.gooutinmetz.model.Category;
+import com.gooutinmetz.category.CategoryModel;
 
 public class SubmitFormSiteListener implements View.OnClickListener {
     private SiteForm siteForm;
@@ -20,7 +20,7 @@ public class SubmitFormSiteListener implements View.OnClickListener {
         intent.putExtra("latitude", Double.parseDouble(siteForm.getLatitude().getText().toString()));
         intent.putExtra("longitude", Double.parseDouble(siteForm.getLongitude().getText().toString()));
         intent.putExtra("postalAddress", siteForm.getPostalAddress().getText().toString());
-        intent.putExtra("categoryId", ((Category) siteForm.getCategory().getSelectedItem()).getId());
+        intent.putExtra("categoryId", ((CategoryModel) siteForm.getCategory().getSelectedItem()).getId());
         intent.putExtra("summary", siteForm.getSummary().getText().toString());
         siteForm.setResult(1, intent);
         siteForm.finish();

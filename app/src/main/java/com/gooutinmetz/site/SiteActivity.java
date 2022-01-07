@@ -1,4 +1,4 @@
-package com.gooutinmetz;
+package com.gooutinmetz.site;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,12 +8,12 @@ import android.widget.ListView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.gooutinmetz.menu.Menu;
 import com.gooutinmetz.administration.DisplaySiteFormListener;
 import com.gooutinmetz.dao.CategoryService;
 import com.gooutinmetz.dao.SiteService;
 import com.gooutinmetz.R;
 import com.gooutinmetz.administration.SiteListView;
-import com.gooutinmetz.model.Site;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
@@ -21,7 +21,7 @@ import java.util.List;
 public class SiteActivity extends AppCompatActivity {
     private SiteService siteService;
     private CategoryService categoryService;
-    private List<Site> siteList;
+    private List<SiteModel> siteList;
     private SiteListView siteListView;
     private ListView listView;
 
@@ -59,7 +59,7 @@ public class SiteActivity extends AppCompatActivity {
         if (data != null && data.getExtras() != null) {
             // Si on ne récupère pas l'id du site, c'est qu'on veut en ajouter un. Sinon on le modifie
             if (data.getLongExtra("id", -1) == -1) {
-                Site site = new Site(data.getStringExtra("label"), data.getDoubleExtra("latitude", 0),
+                SiteModel site = new SiteModel(data.getStringExtra("label"), data.getDoubleExtra("latitude", 0),
                         data.getDoubleExtra("longitude", 0), data.getStringExtra("postalAddress"),
                         categoryService.findById(data.getLongExtra("categoryId", -1)), data.getStringExtra("summary"));
                 site.setId(siteService.create(site));
@@ -67,7 +67,7 @@ public class SiteActivity extends AppCompatActivity {
                 siteListView.add(site);
                 siteListView.notifyDataSetChanged();
             } else {
-                Site site = new Site(data.getLongExtra("id", -1), data.getStringExtra("label"),
+                SiteModel site = new SiteModel(data.getLongExtra("id", -1), data.getStringExtra("label"),
                         data.getDoubleExtra("latitude", 0), data.getDoubleExtra("longitude", 0),
                         data.getStringExtra("postalAddress"), categoryService.findById(data.getLongExtra("categoryId", -1)),
                         data.getStringExtra("summary"));

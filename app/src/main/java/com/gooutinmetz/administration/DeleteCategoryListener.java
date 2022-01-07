@@ -7,18 +7,18 @@ import android.widget.Toast;
 
 import com.gooutinmetz.dao.CategoryService;
 import com.gooutinmetz.dao.SiteService;
-import com.gooutinmetz.CategoryActivity;
+import com.gooutinmetz.category.CategoryActivity;
 import com.gooutinmetz.R;
-import com.gooutinmetz.model.Category;
+import com.gooutinmetz.category.CategoryModel;
 
 public class DeleteCategoryListener implements View.OnClickListener {
-    private Category category;
+    private CategoryModel category;
     private CategoryListView categoryListView;
     private CategoryService categoryService;
     private SiteService siteService;
     private CategoryActivity categoryActivity;
 
-    public DeleteCategoryListener(CategoryActivity activity, CategoryListView categoryListView, Category category, CategoryService categoryService, SiteService siteService) {
+    public DeleteCategoryListener(CategoryActivity activity, CategoryListView categoryListView, CategoryModel category, CategoryService categoryService, SiteService siteService) {
         this.categoryActivity = activity;
         this.category = category;
         this.siteService = siteService;

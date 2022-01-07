@@ -1,4 +1,4 @@
-package com.gooutinmetz.provider;
+package com.gooutinmetz.site;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -12,13 +12,12 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.gooutinmetz.dao.SiteService;
-import com.gooutinmetz.model.Site;
 
 public class SiteProvider extends ContentProvider {
 
     // FOR DATA
     public static final String AUTHORITY = "com.gooutinmetzprovider";
-    public static final String TABLE_NAME = Site.class.getSimpleName();
+    public static final String TABLE_NAME = SiteModel.class.getSimpleName();
 
     // The site service
     private SiteService siteService;
@@ -59,7 +58,7 @@ public class SiteProvider extends ContentProvider {
         final long id;
 
         if (contentValues != null) {
-            id = this.siteService.create(Site.fromContentValues(contentValues));
+            id = this.siteService.create(SiteModel.fromContentValues(contentValues));
 
             if (id != 0) {
                 requireContext().getContentResolver().notifyChange(uri, null);
@@ -84,7 +83,7 @@ public class SiteProvider extends ContentProvider {
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String selection, @Nullable String[] selectionArgs) {
         if (contentValues != null) {
-            final int count = this.siteService.update(Site.fromContentValues(contentValues));
+            final int count = this.siteService.update(SiteModel.fromContentValues(contentValues));
 
             requireContext().getContentResolver().notifyChange(uri, null);
 

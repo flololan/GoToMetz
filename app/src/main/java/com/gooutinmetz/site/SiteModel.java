@@ -1,21 +1,23 @@
-package com.gooutinmetz.model;
+package com.gooutinmetz.site;
 
 import android.content.ContentValues;
 
-public class Site {
+import com.gooutinmetz.category.CategoryModel;
+
+public class SiteModel {
 
     private long id;
     private String label;
     private double latitude;
     private double longitude;
     private String postalAddress;
-    private Category category;
+    private CategoryModel category;
     private String summary;
 
-    public Site() {
+    public SiteModel() {
     }
 
-    public Site(long id, String label, double latitude, double longitude, String postalAddress, Category category, String summary) {
+    public SiteModel(long id, String label, double latitude, double longitude, String postalAddress, CategoryModel category, String summary) {
         this.setId(id);
         this.setLabel(label);
         this.setLatitude(latitude);
@@ -25,7 +27,7 @@ public class Site {
         this.setSummary(summary);
     }
 
-    public Site(String label, double latitude, double longitude, String postalAddress, Category category, String summary) {
+    public SiteModel(String label, double latitude, double longitude, String postalAddress, CategoryModel category, String summary) {
         this.setLabel(label);
         this.setLatitude(latitude);
         this.setLongitude(longitude);
@@ -49,7 +51,7 @@ public class Site {
     public String getPostalAddress() {
         return postalAddress;
     }
-    public Category getCategory() {
+    public CategoryModel getCategory() {
         return category;
     }
     public String getSummary() {
@@ -71,22 +73,22 @@ public class Site {
     public void setPostalAddress(String postalAddress) {
         this.postalAddress = postalAddress;
     }
-    public void setCategory(Category category) {
+    public void setCategory(CategoryModel category) {
         this.category = category;
     }
     public void setSummary(String summary) {
         this.summary = summary;
     }
 
-    public static Site fromContentValues(ContentValues values) {
-        final Site site = new Site();
+    public static SiteModel fromContentValues(ContentValues values) {
+        final SiteModel site = new SiteModel();
 
         if (values.containsKey("id")) site.setId(values.getAsLong("id"));
         if (values.containsKey("label")) site.setLabel(values.getAsString("label"));
         if (values.containsKey("latitude")) site.setLatitude(values.getAsDouble("latitude"));
         if (values.containsKey("longitude")) site.setLongitude(values.getAsDouble("longitude"));
         if (values.containsKey("postalAddr")) site.setPostalAddress(values.getAsString("postalAddr"));
-        if (values.containsKey("category")) site.setCategory((Category) values.get("category"));
+        if (values.containsKey("category")) site.setCategory((CategoryModel) values.get("category"));
         if (values.containsKey("summary")) site.setSummary(values.getAsString("summary"));
 
         return site;

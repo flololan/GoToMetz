@@ -5,13 +5,13 @@ import android.content.Intent;
 import android.view.View;
 
 import com.gooutinmetz.form.CategoryForm;
-import com.gooutinmetz.model.Category;
+import com.gooutinmetz.category.CategoryModel;
 
 public class DisplayCategoryFormListener implements View.OnClickListener {
     private Activity activity;
-    private Category category;
+    private CategoryModel category;
 
-    public DisplayCategoryFormListener(Activity activity, Category category) {
+    public DisplayCategoryFormListener(Activity activity, CategoryModel category) {
         this.activity = activity;
         this.category = category;
     }

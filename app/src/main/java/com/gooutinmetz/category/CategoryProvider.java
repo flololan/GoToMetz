@@ -1,4 +1,4 @@
-package com.gooutinmetz.provider;
+package com.gooutinmetz.category;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -12,13 +12,12 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.gooutinmetz.dao.CategoryService;
-import com.gooutinmetz.model.Category;
 
 public class CategoryProvider extends ContentProvider {
 
     // FOR DATA
     public static final String AUTHORITY = "com.gooutinmetzprovider";
-    public static final String TABLE_NAME = Category.class.getSimpleName();
+    public static final String TABLE_NAME = CategoryModel.class.getSimpleName();
 
     // The site service
     private CategoryService categoryService;
@@ -59,7 +58,7 @@ public class CategoryProvider extends ContentProvider {
         final long id;
 
         if (contentValues != null) {
-            id = this.categoryService.create(Category.fromContentValues(contentValues));
+            id = this.categoryService.create(CategoryModel.fromContentValues(contentValues));
 
             if (id != 0) {
                 requireContext().getContentResolver().notifyChange(uri, null);
@@ -84,7 +83,7 @@ public class CategoryProvider extends ContentProvider {
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String selection, @Nullable String[] selectionArgs) {
         if (contentValues != null) {
-            final int count = this.categoryService.update(Category.fromContentValues(contentValues));
+            final int count = this.categoryService.update(CategoryModel.fromContentValues(contentValues));
 
             requireContext().getContentResolver().notifyChange(uri, null);
 

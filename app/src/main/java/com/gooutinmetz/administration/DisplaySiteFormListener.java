@@ -6,14 +6,14 @@ import android.location.Location;
 import android.view.View;
 
 import com.gooutinmetz.form.SiteForm;
-import com.gooutinmetz.MapsActivity;
-import com.gooutinmetz.model.Site;
+import com.gooutinmetz.map.MapsActivity;
+import com.gooutinmetz.site.SiteModel;
 
 public class DisplaySiteFormListener implements View.OnClickListener {
     private Activity activity;
-    private Site site;
+    private SiteModel site;
 
-    public DisplaySiteFormListener(Activity activity, Site site) {
+    public DisplaySiteFormListener(Activity activity, SiteModel site) {
         this.activity = activity;
         this.site = site;
     }

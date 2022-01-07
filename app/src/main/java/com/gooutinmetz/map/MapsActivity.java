@@ -1,4 +1,4 @@
-package com.gooutinmetz;
+package com.gooutinmetz.map;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -22,16 +22,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.gooutinmetz.menu.Menu;
 import com.gooutinmetz.administration.DisplaySiteFormListener;
 import com.gooutinmetz.dao.CategoryService;
 import com.gooutinmetz.dao.SiteService;
-import com.gooutinmetz.map.MyMapListener;
-import com.gooutinmetz.map.SearchSiteListener;
 import com.gooutinmetz.R;
-import com.gooutinmetz.map.MarkerDescription;
-import com.gooutinmetz.map.SearchSiteDialog;
-import com.gooutinmetz.model.Category;
-import com.gooutinmetz.model.Site;
+import com.gooutinmetz.category.CategoryModel;
+import com.gooutinmetz.site.SiteModel;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -58,7 +55,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     //MyLocationListener myLocationListener; // location listener
 
     // Used when doing a site research
-    private Category searchedCategory;
+    private CategoryModel searchedCategory;
     private int searchedRadius;
 
     public MyMapListener myMapListener;
@@ -211,7 +208,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         //Ajouter un site
         if (data != null && data.getExtras() != null)
             if (data.getLongExtra("id", -1) == -1) {
-                Site site = new Site(data.getStringExtra("label"), data.getDoubleExtra("latitude", 0),
+                SiteModel site = new SiteModel(data.getStringExtra("label"), data.getDoubleExtra("latitude", 0),
                         data.getDoubleExtra("longitude", 0), data.getStringExtra("postalAddress"),
                         categoryDao.findById(data.getLongExtra("categoryId", -1)), data.getStringExtra("summary"));
 
@@ -221,7 +218,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     @Override
-    public void onDialogPositiveClick(Location location, Category category, int radius) {
+    public void onDialogPositiveClick(Location location, CategoryModel category, int radius) {
         searchedCategory = category;
         searchedRadius = radius;
 
@@ -244,7 +241,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             Location siteLocation = new Location("");
             LatLng siteLatLng;
             double siteDistance;
-            for (Site site : siteDao.findByCategory(searchedCategory)) {
+            for (SiteModel site : siteDao.findByCategory(searchedCategory)) {
                 siteLocation.setLatitude(site.getLatitude());
                 siteLocation.setLongitude(site.getLongitude());
 

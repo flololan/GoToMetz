@@ -2,10 +2,9 @@ package com.gooutinmetz.map;
 
 import android.view.View;
 
-import com.gooutinmetz.MapsActivity;
-import com.gooutinmetz.state.StateAddSite;
-import com.gooutinmetz.state.StateController;
-import com.gooutinmetz.state.StateSearchSite;
+import com.gooutinmetz.map.state.StateAddSite;
+import com.gooutinmetz.map.state.StateController;
+import com.gooutinmetz.map.state.StateSearchSite;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 

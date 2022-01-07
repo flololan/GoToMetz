@@ -10,18 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.gooutinmetz.SiteActivity;
+import com.gooutinmetz.site.SiteActivity;
 import com.gooutinmetz.dao.SiteService;
 import com.gooutinmetz.R;
-import com.gooutinmetz.model.Site;
+import com.gooutinmetz.site.SiteModel;
 
 import java.util.List;
 
-public class SiteListView extends ArrayAdapter<Site> {
+public class SiteListView extends ArrayAdapter<SiteModel> {
     private SiteActivity siteActivity;
     private SiteService siteService;
 
-    public SiteListView(SiteActivity siteActivity, List<Site> sites) {
+    public SiteListView(SiteActivity siteActivity, List<SiteModel> sites) {
         super(siteActivity, 0, sites);
         siteService = SiteService.getInstance(siteActivity);
         this.siteActivity = siteActivity;
@@ -33,7 +33,7 @@ public class SiteListView extends ArrayAdapter<Site> {
         View view = convertView;
         if (view == null)
             view = LayoutInflater.from(siteActivity).inflate(R.layout.items_view, parent, false);
-        Site site = getItem(position);
+        SiteModel site = getItem(position);
 
         TextView label = view.findViewById(R.id.itemLabelTV);
         TextView summary = view.findViewById(R.id.itemSummaryTV);

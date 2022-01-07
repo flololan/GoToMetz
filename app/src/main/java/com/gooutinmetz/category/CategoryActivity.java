@@ -1,4 +1,4 @@
-package com.gooutinmetz;
+package com.gooutinmetz.category;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,10 @@ import android.widget.ListView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.gooutinmetz.menu.Menu;
 import com.gooutinmetz.administration.CategoryListView;
 import com.gooutinmetz.administration.DisplayCategoryFormListener;
 import com.gooutinmetz.dao.CategoryService;
-import com.gooutinmetz.model.Category;
 import com.gooutinmetz.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -19,7 +19,7 @@ import java.util.List;
 
 public class CategoryActivity extends AppCompatActivity {
     private CategoryService categoryService;
-    private List<Category> categoryList;
+    private List<CategoryModel> categoryList;
     private CategoryListView categoryListView;
     private ListView listView;
 
@@ -56,13 +56,13 @@ public class CategoryActivity extends AppCompatActivity {
         if (data != null && data.getExtras() != null) {
             // Si on ne récupère pas l'id de la catégorie, c'est qu'on veut en ajouter une. Sinon on la modifie
             if (data.getLongExtra("id", -1) == -1) {
-                Category category = new Category(data.getStringExtra("label"));
+                CategoryModel category = new CategoryModel(data.getStringExtra("label"));
                 category.setId(categoryService.create(category));
 
                 categoryListView.add(category);
                 categoryListView.notifyDataSetChanged();
             } else {
-                Category category = new Category(data.getLongExtra("id", -1), data.getStringExtra("label"));
+                CategoryModel category = new CategoryModel(data.getLongExtra("id", -1), data.getStringExtra("label"));
 
                 categoryService.update(category);
                 categoryList = categoryService.findAll();
