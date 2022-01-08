@@ -26,7 +26,9 @@ public class Menu implements BottomNavigationView.OnNavigationItemSelectedListen
         categoryIntent = new Intent(this.context, CategoryActivity.class);
     }
 
-    // Quand on change d'activité dans le menu
+    /**
+     * On activity change in the menu
+     */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {

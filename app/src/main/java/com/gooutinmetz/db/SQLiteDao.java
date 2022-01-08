@@ -16,16 +16,12 @@ public abstract class SQLiteDao<T> {
         this.databaseHelper = DatabaseHelper.getInstance(this.context);
     }
 
-    /*
-        Ecrire dans la bdd
-     */
+    /** Write in the BDD */
     public void openWritable() throws SQLException {
         sqLiteDatabase = databaseHelper.getWritableDatabase();
     }
 
-    /*
-        Lire dans la bdd
-     */
+    /** Read in the BDD */
     public void openReadable() throws SQLException {
         sqLiteDatabase = databaseHelper.getReadableDatabase();
     }

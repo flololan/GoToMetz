@@ -18,7 +18,7 @@ public class DisplayCategoryFormListener implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-         Intent intent = new Intent(activity, CategoryForm.class);
+        Intent intent = new Intent(activity, CategoryForm.class);
         if (category != null) {
             intent.putExtra("id", category.getId());
             intent.putExtra("label", category.getLabel());

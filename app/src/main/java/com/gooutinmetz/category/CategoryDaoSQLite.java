@@ -96,7 +96,7 @@ public class CategoryDaoSQLite extends SQLiteDao<CategoryModel> implements DAOSe
 
         List<CategoryModel> categories = new LinkedList<>();
 
-        String query = "SELECT  * FROM " + DatabaseHelper.TABLE_CATEGORY;
+        String query = "SELECT * FROM " + DatabaseHelper.TABLE_CATEGORY;
 
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
 

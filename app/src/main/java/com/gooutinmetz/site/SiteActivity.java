@@ -34,28 +34,28 @@ public class SiteActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.siteMenu);
         bottomNavigationView.setOnNavigationItemSelectedListener(new Menu(this));
 
-        // Récupération des données de la base
+        // Retrieve sites and category from DB
         siteDAOService = SiteDaoService.getInstance(this);
         categoryDAOService = CategoryDaoService.getInstance(this);
         siteList = siteDAOService.findAll();
 
-        // Remplit la liste des sites
+        // Fill the ListView
         siteListView = new SiteListView(this, siteList);
         listView = findViewById(R.id.siteLV);
         listView.setAdapter(siteListView);
 
-        // Bouton pour ajouter un site
+        // Button to add a site
         Button addSiteBTN = findViewById(R.id.addSiteBTN);
         addSiteBTN.setOnClickListener(new DisplaySiteFormListener(this, null));
     }
 
-    // On récupère les données venant des modales d'ajout et de modification de site
+    // We retrieve the data coming from modals
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (data != null && data.getExtras() != null) {
-            // Si on ne récupère pas l'id du site, c'est qu'on veut en ajouter un. Sinon on le modifie
+            // If we don't retrieve the id of the categorie, then we want to add one.
             if (data.getLongExtra("id", -1) == -1) {
                 SiteModel site = new SiteModel(data.getStringExtra("label"), data.getDoubleExtra("latitude", 0),
                         data.getDoubleExtra("longitude", 0), data.getStringExtra("postalAddress"),
@@ -64,6 +64,7 @@ public class SiteActivity extends AppCompatActivity {
 
                 siteListView.add(site);
                 siteListView.notifyDataSetChanged();
+            // else we want to modify it
             } else {
                 SiteModel site = new SiteModel(data.getLongExtra("id", -1), data.getStringExtra("label"),
                         data.getDoubleExtra("latitude", 0), data.getDoubleExtra("longitude", 0),

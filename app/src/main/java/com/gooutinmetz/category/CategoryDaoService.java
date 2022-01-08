@@ -10,7 +10,7 @@ import java.util.List;
 public class CategoryDaoService implements DAOService<CategoryModel> {
 
     private static CategoryDaoService instance;
-    private CategoryDaoSQLite categoryDaoSQLite;
+    private final CategoryDaoSQLite categoryDaoSQLite;
 
     private CategoryDaoService(Context context){
         categoryDaoSQLite = CategoryDaoSQLite.getInstance(context);

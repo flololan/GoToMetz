@@ -52,7 +52,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     LocationManager locationManager = null;
     private String provider;
-    //MyLocationListener myLocationListener; // location listener
 
     // Used when doing a site research
     private CategoryModel searchedCategory;
@@ -69,11 +68,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //  Vérifie les permissions
+        // Check permissions
         permissions = 0;
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-            //Permission de localisation
+            // Location perm
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         } else {
@@ -81,7 +80,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     != PackageManager.PERMISSION_GRANTED) {
-                //Permission pour écrire dans le fichier
+                // File perm
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
             } else {
@@ -89,7 +88,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
                 if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
                         != PackageManager.PERMISSION_GRANTED) {
-                    //Permission pour lire le fichier
+                    // Read file perm
                     ActivityCompat.requestPermissions(this,
                             new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 3);
                 }
@@ -98,7 +97,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             }
         }
 
-        //Lance l'application quand toutes les permissions sont accordées
+        // Run app only if the needed perms are set
         if (permissions == 3)
             run();
     }
@@ -107,19 +106,19 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        //Affiche un message si la permission n'est pas accordée
+        // Display toast message if perm is not granted
         Toast toast = Toast.makeText(this, this.getResources().getString(R.string.noPermissions), Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_DENIED)
             toast.show();
 
-        //Si la permission de localisation est accordée
-        if (requestCode == 1 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+        boolean isLocationPermissionGranted = requestCode == 1 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+        if (isLocationPermissionGranted)
             MapActivity.permissions++;
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            //Si la permissionj d'écrire dans le fichier est accordée
+        boolean isWriteInFilePermissionGranted = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED;
+        if (isWriteInFilePermissionGranted) {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
         } else
@@ -154,27 +153,24 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         if (mapFragment != null)
             mapFragment.getMapAsync(this);
 
-        //récupérer les données bdd via la DAO
+        // Retrieve data from DAO
         categoryDao = CategoryDaoService.getInstance(this);
         siteDao = SiteDaoService.getInstance(this);
 
-        // Bouton listeners
-
+        // Button listeners
         Button searchSiteFromUserBTN = findViewById(R.id.searchSiteFromUserBTN);
         searchSiteFromUserBTN.setOnClickListener(new SearchSiteListener(this));
+        searchSiteBTN = findViewById(R.id.searchSiteBTN);
 
         Button addSiteFromUserBTN = findViewById(R.id.addSiteFromUserBTN);
         addSiteFromUserBTN.setOnClickListener(new DisplaySiteFormListener(this, null));
-
-        searchSiteBTN = findViewById(R.id.searchSiteBTN);
         addSiteBTN = findViewById(R.id.addSiteBTN);
     }
 
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
+     * This is where we can add markers or lines, add listeners or move the camera.
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
@@ -184,12 +180,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        //Récupère la position de l'utilisateur
+        // Retrieve the position of the user
         locationInitialization();
 
         mMap.setMyLocationEnabled(true);
 
-        //Zoomer sur la position de l'utilisateur
+        // Zoom on the user location
         if (userLocation != null) {
             LatLng userLatLng = new LatLng(userLocation.getLatitude(), userLocation.getLongitude());
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(userLatLng, 12);
@@ -205,15 +201,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        //Ajouter un site
-        if (data != null && data.getExtras() != null)
+        boolean isAddingSiteOperation = data != null && data.getExtras() != null;
+        if (isAddingSiteOperation)
             if (data.getLongExtra("id", -1) == -1) {
                 SiteModel site = new SiteModel(data.getStringExtra("label"), data.getDoubleExtra("latitude", 0),
                         data.getDoubleExtra("longitude", 0), data.getStringExtra("postalAddress"),
                         categoryDao.findById(data.getLongExtra("categoryId", -1)), data.getStringExtra("summary"));
 
-                //Création du site dans la bdd
-                site.setId(siteDao.create(site));
+                long siteId = siteDao.create(site);
+                site.setId(siteId);
             }
     }
 
@@ -230,14 +226,14 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         if (searchedCategory != null) {
             mMap.clear();
 
-            //Ajouter le cercle sur la map
+            // Add a circle on the map
             mMap.addCircle(new CircleOptions()
                     .center(new LatLng(location.getLatitude(), location.getLongitude()))
                     .radius(searchedRadius)
                     .strokeColor(Color.BLACK)
                     .fillColor(Color.argb(0.3f, 0, 0, 255)));
 
-            //Ajouter les marqueurs sur la map
+            // Add a marker on the map
             Location siteLocation = new Location("");
             LatLng siteLatLng;
             double siteDistance;
@@ -250,7 +246,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 siteDistance = location.distanceTo(siteLocation);
                 siteDistance = Math.round(siteDistance * 100) / 100.0;
 
-                //Vérifier si le marqueurs du site se situe dans la rayon de recherche
+                // Check the marker is located in the search radius
                 if (siteDistance <= searchedRadius)
                     mMap.addMarker(new MarkerOptions()
                             .position(siteLatLng)
@@ -285,7 +281,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                this.onLocationChanged(userLocation);
             else{
                 locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, this);
-                Log.e("Erreur Localisation","Entrer dans else de requestLocationUpdates");
+                Log.e("Localisation Error","Enter in the else of requestLocationUpdates");
                 if (userLocation != null)
                     this.onLocationChanged(userLocation);
             }

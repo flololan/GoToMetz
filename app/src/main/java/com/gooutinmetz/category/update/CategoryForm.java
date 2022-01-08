@@ -14,7 +14,6 @@ import com.gooutinmetz.shared.CancelFormListener;
 public class CategoryForm extends AppCompatActivity {
     private TextView id;
     private EditText label;
-    private boolean isAdding = true;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -22,9 +21,6 @@ public class CategoryForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.category_form);
 
-        // Si on retrouve des valeurs, on est dans la modification
-        if (this.getIntent().getExtras() != null)
-            isAdding = false;
 
         TextView title = findViewById(R.id.addOrUpdateCategoryTV);
         id = findViewById(R.id.categoryIdTV);
@@ -33,7 +29,8 @@ public class CategoryForm extends AppCompatActivity {
         Button submit = findViewById(R.id.submitBTN);
         Button cancel = findViewById(R.id.cancelBTN);
 
-        if (isAdding) {
+        boolean isAddingACategory = this.getIntent().getExtras() != null;
+        if (isAddingACategory) {
             title.setText(this.getString(R.string.addCategory));
             submit.setText(R.string.add);
         } else {

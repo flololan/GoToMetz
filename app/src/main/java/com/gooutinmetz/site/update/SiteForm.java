@@ -71,7 +71,7 @@ public class SiteForm extends AppCompatActivity {
             submit.setText(R.string.update);
         }
 
-        // Si on ajoute depuis la carte on remplit la position de l'utilisateur
+        // If we add a site from a map, we can retrieve the position automatically
         if (this.getIntent().getExtras() != null && this.getIntent().hasExtra("latitudeForMap")) {
             latitude.setText(String.valueOf(this.getIntent().getExtras().getDouble("latitudeForMap")));
             longitude.setText(String.valueOf(this.getIntent().getExtras().getDouble("longitudeForMap")));

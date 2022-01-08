@@ -44,7 +44,7 @@ public class SearchSiteDialog extends AppCompatDialogFragment {
             listener = (SearchModalDialogListener) context;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() +
-                    "must implement SearchModalDialogListener");
+                    " must implement SearchModalDialogListener");
         }
     }
 
