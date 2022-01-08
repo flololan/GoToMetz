@@ -2,6 +2,8 @@ package com.gooutinmetz.map;
 
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import com.gooutinmetz.map.state.StateAddSite;
 import com.gooutinmetz.map.state.StateController;
 import com.gooutinmetz.map.state.StateSearchSite;
@@ -41,7 +43,7 @@ public class MapClickListener implements GoogleMap.OnMapClickListener, View.OnCl
     }
 
     @Override
-    public void onMapClick(LatLng latLng) {
+    public void onMapClick(@NonNull LatLng latLng) {
         this.currentState.onMapClick(latLng);
     }
 }
