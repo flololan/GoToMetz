@@ -25,7 +25,6 @@ public class SiteForm extends AppCompatActivity {
     private EditText postalAddress;
     private EditText summary;
     private Spinner category;
-    private boolean isAdding = true;
 
     @SuppressLint({"MissingPermission"})
     @Override
