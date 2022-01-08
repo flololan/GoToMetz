@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 public class CategoryProvider extends ContentProvider {
-    public static final String AUTHORITY = "com.gooutinmetz.category.provider";
+    public static final String AUTHORITY = "com.gooutinmetz.category.CategoryProvider";
     public static final String TABLE_NAME = CategoryModel.class.getSimpleName();
 
     private CategoryDaoService categoryDAOService;

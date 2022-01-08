@@ -5,13 +5,12 @@ import android.content.Intent;
 import android.location.Location;
 import android.view.View;
 
-import com.gooutinmetz.site.update.SiteForm;
 import com.gooutinmetz.map.MapActivity;
 import com.gooutinmetz.site.SiteModel;
 
 public class DisplaySiteFormListener implements View.OnClickListener {
-    private Activity activity;
-    private SiteModel site;
+    private final Activity activity;
+    private final SiteModel site;
 
     public DisplaySiteFormListener(Activity activity, SiteModel site) {
         this.activity = activity;

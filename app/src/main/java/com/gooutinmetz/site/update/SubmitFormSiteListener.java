@@ -6,7 +6,7 @@ import android.view.View;
 import com.gooutinmetz.category.CategoryModel;
 
 public class SubmitFormSiteListener implements View.OnClickListener {
-    private SiteForm siteForm;
+    private final SiteForm siteForm;
 
     public SubmitFormSiteListener(SiteForm siteForm) {
         this.siteForm = siteForm;

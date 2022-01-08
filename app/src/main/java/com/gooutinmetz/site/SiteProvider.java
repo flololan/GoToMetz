@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 public class SiteProvider extends ContentProvider {
-    public static final String AUTHORITY = "com.gooutinmetzprovider";
+    public static final String AUTHORITY = "com.gooutinmetz.site.SiteProvider";
     public static final String TABLE_NAME = SiteModel.class.getSimpleName();
 
     private SiteDaoService siteDAOService;
