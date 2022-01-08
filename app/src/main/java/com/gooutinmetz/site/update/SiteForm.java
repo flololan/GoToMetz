@@ -33,10 +33,6 @@ public class SiteForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.site_form);
 
-        // Si on ne retrouve les valeurs du site, on est dans la modification
-        if (this.getIntent().getExtras() != null && this.getIntent().hasExtra("id"))
-            isAdding = false;
-
         TextView title = findViewById(R.id.addOrUpdateSiteTV);
         id = findViewById(R.id.siteIdTV);
         label = findViewById(R.id.siteLabelET);
@@ -56,6 +52,7 @@ public class SiteForm extends AppCompatActivity {
         submit.setOnClickListener(new SubmitFormSiteListener(this));
         cancel.setOnClickListener(new CancelFormListener(this));
 
+        boolean isAdding = this.getIntent().getExtras() != null && this.getIntent().hasExtra("id");
         if (isAdding) {
             title.setText(this.getString(R.string.addSite));
             submit.setText(R.string.add);
