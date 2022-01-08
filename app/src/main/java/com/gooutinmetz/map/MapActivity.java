@@ -51,7 +51,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private SiteDaoService siteDao;
 
     LocationManager locationManager = null;
-    private String provider;
 
     // Used when doing a site research
     private CategoryModel searchedCategory;
@@ -62,7 +61,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public Button addSiteBTN;
 
     public String bestProvider;
-    public Criteria criteria;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,7 +175,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
      */
     @SuppressLint("MissingPermission")
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
 
         // Retrieve the position of the user
@@ -263,7 +261,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 return;
             }
             Criteria criteria = new Criteria();
-            bestProvider = String.valueOf(locationManager.getBestProvider(criteria, true)).toString();
+            bestProvider = String.valueOf(locationManager.getBestProvider(criteria, true));
             locationManager.requestLocationUpdates(bestProvider, 1000, 0, this);
 
 
@@ -314,9 +312,5 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onProviderDisabled(String provider) {
 
-    }
-
-    public void searchNearestPlace(String v2txt) {
-        //.....
     }
 }
