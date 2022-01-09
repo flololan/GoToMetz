@@ -185,8 +185,8 @@
         android:layout_marginBottom="20dp"
         android:background="@color/colorAccent"
         android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/siteSummaryET"
+        app:layout_constraintLeft_toLeftOf="@id/siteSummaryET"
         app:layout_constraintRight_toLeftOf="@id/submitBTN" />
 
     <Button
@@ -197,8 +197,8 @@
         android:layout_marginBottom="20dp"
         android:background="@color/colorAccent"
         android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/siteSummaryET"
         app:layout_constraintLeft_toRightOf="@id/cancelBTN"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="@id/siteSummaryET" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

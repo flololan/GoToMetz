@@ -62,8 +62,8 @@
         android:layout_marginBottom="20dp"
         android:background="@color/colorAccent"
         android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categoryLabelET"
+        app:layout_constraintLeft_toLeftOf="@id/categoryLabelTV"
         app:layout_constraintRight_toLeftOf="@id/submitBTN" />
 
     <Button
@@ -74,8 +74,8 @@
         android:layout_marginBottom="20dp"
         android:background="@color/colorAccent"
         android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categoryLabelET"
         app:layout_constraintLeft_toRightOf="@id/cancelBTN"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="@id/categoryLabelET" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

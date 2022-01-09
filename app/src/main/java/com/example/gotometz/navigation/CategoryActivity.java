@@ -24,8 +24,6 @@ public class CategoryActivity extends AppCompatActivity {
     private CategoryListView categoryListView;
     private ListView listView;
 
-    public FloatingActionButton addCategoryBTN;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

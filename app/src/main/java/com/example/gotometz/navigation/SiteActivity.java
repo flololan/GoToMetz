@@ -15,6 +15,7 @@ import com.example.gotometz.dao.SiteService;
 import com.example.gotometz.list_views.SiteListView;
 import com.example.gotometz.dbmodels.Site;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class SiteActivity extends AppCompatActivity {
         listView.setAdapter(siteListView);
 
         // add site button
-        Button addSiteBTN = findViewById(R.id.addSiteBTN);
+        FloatingActionButton addSiteBTN = findViewById(R.id.addSiteBTN);
         addSiteBTN.setOnClickListener(new AddOrEditSiteFormListener(this, null));
     }
 
