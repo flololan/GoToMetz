@@ -7,10 +7,12 @@
         <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/layout/activity_maps.xml" value="0.25" />
         <entry key="..\:/Users/flosw/AndroidStudioProjects/GoToMetz/app/src/main/res/menu/menu.xml" value="0.12708333333333333" />
         <entry key="app/src/main/res/layout/activity_category.xml" value="0.20260416666666667" />
-        <entry key="app/src/main/res/layout/activity_maps.xml" value="0.30458821336883635" />
+        <entry key="app/src/main/res/layout/activity_maps.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_site.xml" value="0.20298435069462967" />
+        <entry key="app/src/main/res/layout/category_form.xml" value="0.12202737793352868" />
         <entry key="app/src/main/res/layout/list_of_item_view.xml" value="0.32994340291862856" />
         <entry key="app/src/main/res/layout/marker_description.xml" value="0.14311043566362716" />
+        <entry key="app/src/main/res/layout/site_form.xml" value="1.0" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.25456419640294775" />
       </map>
     </option>

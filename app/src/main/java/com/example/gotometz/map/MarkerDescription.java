@@ -17,13 +17,10 @@ public class MarkerDescription implements GoogleMap.InfoWindowAdapter {
         this.inflater = inflater;
     }
 
-    @Override
     public View getInfoWindow(Marker marker) {
         return null;
     }
 
-    @SuppressLint("InflateParams")
-    @Override
     public View getInfoContents(Marker marker) {
         if (markerModal == null)
             markerModal = inflater.inflate(R.layout.marker_description, null);

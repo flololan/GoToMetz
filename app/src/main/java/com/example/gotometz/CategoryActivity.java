@@ -33,34 +33,34 @@ public class CategoryActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.categoryMenu);
         bottomNavigationView.setOnNavigationItemSelectedListener(new Menu(this));
 
-        // Récupération des données de la base
-        categoryService = CategoryService.getInstance(this);
-        categoryList = categoryService.findAll();
+        this.renderActivities();
 
-        // Remplit la liste des catégories
-        categoryListView = new CategoryListView(this, categoryList);
-        listView = findViewById(R.id.categoryLV);
-        listView.setAdapter(categoryListView);
-
-        // Bouton pour ajouter une catégorie
         Button addCategoryBTN = findViewById(R.id.addCategoryBTN);
         addCategoryBTN.setOnClickListener(new DisplayCategoryFormListener(this, null));
     }
 
-    // On récupère les données venant des modales d'ajout et de modification de catégories
-    @Override
+    protected void renderActivities() {
+        categoryService = CategoryService.getInstance(this);
+        categoryList = categoryService.findAll();
+
+        categoryListView = new CategoryListView(this, categoryList);
+        listView = findViewById(R.id.categoryLV);
+        listView.setAdapter(categoryListView);
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (data != null && data.getExtras() != null) {
-            // Si on ne récupère pas l'id de la catégorie, c'est qu'on veut en ajouter une. Sinon on la modifie
-            if (data.getLongExtra("id", -1) == -1) {
+            Boolean createCategory = data.getLongExtra("id", -1) == -1;
+            if (createCategory) {
                 Category category = new Category(data.getStringExtra("label"));
                 category.setId(categoryService.create(category));
 
                 categoryListView.add(category);
                 categoryListView.notifyDataSetChanged();
             } else {
+                // update category
                 Category category = new Category(data.getLongExtra("id", -1), data.getStringExtra("label"));
 
                 categoryService.update(category);

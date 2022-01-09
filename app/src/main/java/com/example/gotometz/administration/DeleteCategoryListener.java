@@ -28,8 +28,8 @@ public class DeleteCategoryListener implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        // On ne veut pas supprimer une catégorie qui est utilisée par un site
-        if (siteService.isCategoryUsed(category)) {
+        Boolean categoryStillInUse = siteService.isCategoryUsed(category);
+        if (categoryStillInUse) {
             Toast.makeText(categoryActivity, R.string.warningDelete, Toast.LENGTH_LONG).show();
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(categoryActivity);

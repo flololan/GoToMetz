@@ -36,12 +36,10 @@ public class MyMapListener implements GoogleMap.OnMapClickListener, View.OnClick
         this.currentState = this.stateSearchSite;
     }
 
-    @Override
     public void onClick(View v) {
         this.currentState.onClick(v);
     }
 
-    @Override
     public void onMapClick(LatLng latLng) {
         this.currentState.onMapClick(latLng);
     }

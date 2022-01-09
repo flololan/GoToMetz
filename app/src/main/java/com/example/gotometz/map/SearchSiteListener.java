@@ -12,7 +12,6 @@ public class SearchSiteListener implements View.OnClickListener {
         this.activity = activity;
     }
 
-    @Override
     public void onClick(View v) {
         SearchSiteDialog searchSiteDialog = new SearchSiteDialog(activity, activity.getUserLocation());
         searchSiteDialog.show(activity.getSupportFragmentManager(), "Search");

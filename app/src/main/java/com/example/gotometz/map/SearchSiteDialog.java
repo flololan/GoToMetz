@@ -37,7 +37,6 @@ public class SearchSiteDialog extends AppCompatDialogFragment {
         void onDialogPositiveClick(Location location, Category category, int radius);
     }
 
-    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         try {
@@ -48,7 +47,6 @@ public class SearchSiteDialog extends AppCompatDialogFragment {
         }
     }
 
-    @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(mapsActivity);
         LayoutInflater inflater = mapsActivity.getLayoutInflater();

@@ -32,7 +32,6 @@ public class CategoryListView extends ArrayAdapter<Category> {
     }
 
     @NonNull
-    @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = convertView;
         if (view == null)
