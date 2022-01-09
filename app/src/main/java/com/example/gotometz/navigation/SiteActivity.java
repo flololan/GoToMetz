@@ -31,33 +31,33 @@ public class SiteActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_site);
 
-        // Menu
+        // Menu initialisation
         BottomNavigationView bottomNavigationView = this.findViewById(R.id.menu);
         bottomNavigationView.setSelectedItemId(R.id.siteMenu);
         bottomNavigationView.setOnNavigationItemSelectedListener(new Menu(this));
 
-        // Récupération des données de la base
+        // Getting data from DB
         siteService = SiteService.getInstance(this);
         categoryService = CategoryService.getInstance(this);
         siteList = siteService.findAll();
 
-        // Remplit la liste des sites
+        // Fill site/poi list
         siteListView = new SiteListView(this, siteList);
         listView = findViewById(R.id.siteLV);
         listView.setAdapter(siteListView);
 
-        // Bouton pour ajouter un site
+        // add site button
         Button addSiteBTN = findViewById(R.id.addSiteBTN);
         addSiteBTN.setOnClickListener(new AddOrEditSiteFormListener(this, null));
     }
 
-    // On récupère les données venant des modales d'ajout et de modification de site
+    // Retrieve the data of sub activity for adding and modifying
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (data != null && data.getExtras() != null) {
-            // Si on ne récupère pas l'id du site, c'est qu'on veut en ajouter un. Sinon on le modifie
+            // If we can't get the ID of the category, it means the user wants to add one. Otherwise we edit it.
             if (data.getLongExtra("id", -1) == -1) {
                 Site site = new Site(data.getStringExtra("label"), data.getDoubleExtra("latitude", 0),
                         data.getDoubleExtra("longitude", 0), data.getStringExtra("postalAddress"),
