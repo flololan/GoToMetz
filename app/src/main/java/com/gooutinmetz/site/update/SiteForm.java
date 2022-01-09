@@ -51,8 +51,8 @@ public class SiteForm extends AppCompatActivity {
         submit.setOnClickListener(new SubmitFormSiteListener(this));
         cancel.setOnClickListener(new CancelFormListener(this));
 
-        boolean isAdding = this.getIntent().getExtras() != null && this.getIntent().hasExtra("id");
-        if (isAdding) {
+        boolean isEditing = this.getIntent().getExtras() != null && this.getIntent().hasExtra("id");
+        if (!isEditing) {
             title.setText(this.getString(R.string.addSite));
             submit.setText(R.string.add);
         } else {

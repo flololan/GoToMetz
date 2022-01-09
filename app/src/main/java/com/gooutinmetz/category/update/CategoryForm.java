@@ -29,7 +29,7 @@ public class CategoryForm extends AppCompatActivity {
         Button submit = findViewById(R.id.submitBTN);
         Button cancel = findViewById(R.id.cancelBTN);
 
-        boolean isAddingACategory = this.getIntent().getExtras() != null;
+        boolean isAddingACategory = this.getIntent().getExtras() == null;
         if (isAddingACategory) {
             title.setText(this.getString(R.string.addCategory));
             submit.setText(R.string.add);
