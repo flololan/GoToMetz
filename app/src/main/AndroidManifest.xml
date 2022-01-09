@@ -34,7 +34,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <!--android:exported: Needs to be added for Android 12-->
         <activity
             android:name="com.gooutinmetz.map.MapActivity"
             android:exported="true"
@@ -67,7 +66,7 @@
 
         <provider
             android:name="com.gooutinmetz.category.CategoryProvider"
-            android:authorities="com.example.gotometz.provider"
+            android:authorities="com.gooutinmetz.provider"
             android:enabled="true"
             android:exported="true"
             tools:ignore="ExportedContentProvider" />

@@ -12,7 +12,7 @@ import com.gooutinmetz.category.CategoryActivity;
 import com.gooutinmetz.map.MapActivity;
 import com.gooutinmetz.site.SiteActivity;
 
-public class Menu implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class Menu extends android.app.Activity implements BottomNavigationView.OnNavigationItemSelectedListener {
     private final Context context;
     private final Intent mapIntent;
     private final Intent categoryIntent;

@@ -10,6 +10,9 @@ import com.gooutinmetz.map.state.StateSearchSite;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 
+/**
+ * Trigger an action depending of the state of the map
+ */
 public class MapClickListener implements GoogleMap.OnMapClickListener, View.OnClickListener {
 
     public MapActivity activity;

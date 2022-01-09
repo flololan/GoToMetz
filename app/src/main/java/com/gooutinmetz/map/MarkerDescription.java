@@ -11,6 +11,9 @@ import com.gooutinmetz.R;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.Marker;
 
+/**
+ * Popup for sites on the map on click
+ */
 public class MarkerDescription implements GoogleMap.InfoWindowAdapter {
     private View markerModal = null;
     private final LayoutInflater inflater;

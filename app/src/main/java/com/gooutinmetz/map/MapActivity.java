@@ -54,7 +54,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     // Used when doing a site research
     private CategoryModel searchedCategory;
-    private int searchedRadius;
+    private int searchRadius;
 
     public MapClickListener mapClickListener;
     public Button searchSiteBTN;
@@ -214,7 +214,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onDialogPositiveClick(Location location, CategoryModel category, int radius) {
         searchedCategory = category;
-        searchedRadius = radius;
+        searchRadius = radius;
 
         searchSites(location);
     }
@@ -227,7 +227,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             // Add a circle on the map
             mMap.addCircle(new CircleOptions()
                     .center(new LatLng(location.getLatitude(), location.getLongitude()))
-                    .radius(searchedRadius)
+                    .radius(searchRadius)
                     .strokeColor(Color.BLACK)
                     .fillColor(Color.argb(0.3f, 0, 0, 255)));
 
@@ -245,7 +245,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 siteDistance = Math.round(siteDistance * 100) / 100.0;
 
                 // Check the marker is located in the search radius
-                if (siteDistance <= searchedRadius)
+                if (siteDistance <= searchRadius)
                     mMap.addMarker(new MarkerOptions()
                             .position(siteLatLng)
                             .title(site.getLabel())
