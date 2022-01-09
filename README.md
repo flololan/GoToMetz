@@ -12,8 +12,9 @@ All the app is stored in `src/main/java/com/gooutinmetz` and `src/main/res/`.
 The application is divided into 3 main activities: Map, Site and Category.
 A common menu allows to navigate between the different activity.
 
-Each activity refers to forms to handle the modification of data:
-- `gooutinmetz/site/update/SiteForm.java` to handle the a
+Each activity refers to forms to handle the modification of data (subactivites):
+- `gooutinmetz/site/update/SiteForm.java`
+- `gooutinmetz/category/update/CategoryForm.java`
 
 ## Possible improvements
 
