@@ -1,8 +1,13 @@
-package com.example.gotometz.form;
+package com.example.gotometz.listeners;
 
 import android.content.Intent;
 import android.view.View;
 
+import com.example.gotometz.form.CategoryForm;
+
+/**
+ * Submits data and closes form
+ */
 public class SubmitFormCategoryListener implements View.OnClickListener {
     private CategoryForm categoryForm;
 

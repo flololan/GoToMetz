@@ -9,7 +9,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gotometz.R;
+import com.example.gotometz.listeners.CancelFormListener;
+import com.example.gotometz.listeners.SubmitFormCategoryListener;
 
+/**
+ * Fragment of category form to be added in activities
+ */
 public class CategoryForm extends AppCompatActivity {
     private TextView id;
     private EditText label;
@@ -21,7 +26,7 @@ public class CategoryForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.category_form);
 
-        // Si on retrouve des valeurs, on est dans la modification
+        // If we don't find values we are in editing mode
         if (this.getIntent().getExtras() != null)
             isAdding = false;
 

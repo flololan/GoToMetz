@@ -14,13 +14,16 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-import com.example.gotometz.MapsActivity;
+import com.example.gotometz.navigation.MapsActivity;
 import com.example.gotometz.R;
 import com.example.gotometz.dao.CategoryService;
-import com.example.gotometz.model.Category;
+import com.example.gotometz.dbmodels.Category;
 
 import java.util.List;
 
+/**
+ * Logic behind the research view (which is a dialog)
+ */
 public class SearchSiteDialog extends AppCompatDialogFragment {
 
     private MapsActivity mapsActivity;

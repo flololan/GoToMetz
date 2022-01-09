@@ -12,10 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gotometz.R;
 import com.example.gotometz.dao.CategoryService;
-import com.example.gotometz.model.Category;
+import com.example.gotometz.listeners.CancelFormListener;
+import com.example.gotometz.listeners.SubmitFormSiteListener;
+import com.example.gotometz.dbmodels.Category;
 
 import java.util.List;
-
+/**
+ * Fragment of sites/POI form to be added in other activities
+ */
 public class SiteForm extends AppCompatActivity {
     private TextView id;
     private EditText label;
@@ -32,7 +36,7 @@ public class SiteForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.site_form);
 
-        // Si on ne retrouve les valeurs du site, on est dans la modification
+        // If we don't find values we are in editing mode
         if (this.getIntent().getExtras() != null && this.getIntent().hasExtra("id"))
             isAdding = false;
 

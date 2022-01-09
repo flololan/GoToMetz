@@ -1,10 +1,13 @@
-package com.example.gotometz.state;
+package com.example.gotometz.map;
 
 import android.view.View;
 
-import com.example.gotometz.map.MyMapListener;
+import com.example.gotometz.listeners.MyMapListener;
 import com.google.android.gms.maps.model.LatLng;
 
+/**
+ * Abstract class which manages the common features for onMap feature (AddSite, SearchSite)
+ */
 public abstract class StateController {
 
     public MyMapListener myMapListener;

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MapsActivity">
+    tools:context=".navigation.MapsActivity">
 
     <fragment
         xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -40,7 +40,7 @@
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/personSearchBTN"
+        android:id="@+id/personAddBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/add_location_24"
@@ -51,13 +51,13 @@
         android:layout_margin="24dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/personAddBTN"
+        android:id="@+id/personSearchBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/search_24"
-        app:layout_constraintBottom_toTopOf="@+id/personSearchBTN"
-        app:layout_constraintEnd_toEndOf="@+id/personSearchBTN"
-        app:layout_constraintStart_toStartOf="@+id/personSearchBTN"
+        app:layout_constraintBottom_toTopOf="@+id/personAddBTN"
+        app:layout_constraintEnd_toEndOf="@+id/personAddBTN"
+        app:layout_constraintStart_toStartOf="@+id/personAddBTN"
         android:layout_gravity="end|bottom"
         android:layout_margin="24dp" />
 

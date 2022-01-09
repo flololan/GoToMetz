@@ -4,10 +4,13 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.example.gotometz.dao.sqlite.SQLiteCategoryDao;
-import com.example.gotometz.model.Category;
+import com.example.gotometz.dbmodels.Category;
 
 import java.util.List;
 
+/**
+ * Assign methods to be used with categories
+ */
 public class CategoryService implements ServiceDAO<Category> {
 
     private static CategoryService instance;

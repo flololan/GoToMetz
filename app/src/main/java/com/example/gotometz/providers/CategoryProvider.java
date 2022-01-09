@@ -1,4 +1,4 @@
-package com.example.gotometz.provider;
+package com.example.gotometz.providers;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.example.gotometz.dao.CategoryService;
-import com.example.gotometz.model.Category;
+import com.example.gotometz.dbmodels.Category;
 
 public class CategoryProvider extends ContentProvider {
 

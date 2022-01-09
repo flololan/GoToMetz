@@ -1,4 +1,4 @@
-package com.example.gotometz.administration;
+package com.example.gotometz.list_views;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.gotometz.R;
-import com.example.gotometz.SiteActivity;
+import com.example.gotometz.navigation.SiteActivity;
 import com.example.gotometz.dao.SiteService;
-import com.example.gotometz.model.Site;
+import com.example.gotometz.listeners.DeleteSiteListener;
+import com.example.gotometz.listeners.AddOrEditSiteFormListener;
+import com.example.gotometz.dbmodels.Site;
 
 import java.util.List;
-
+/**
+ * Sub-view of site/POI list to be added in activities
+ */
 public class SiteListView extends ArrayAdapter<Site> {
     private SiteActivity siteActivity;
     private SiteService siteService;
@@ -42,7 +46,7 @@ public class SiteListView extends ArrayAdapter<Site> {
         if (site != null) {
             label.setText(site.getLabel());
             summary.setText(site.getSummary());
-            update.setOnClickListener(new DisplaySiteFormListener(siteActivity, site));
+            update.setOnClickListener(new AddOrEditSiteFormListener(siteActivity, site));
             delete.setOnClickListener(new DeleteSiteListener(siteActivity, this, site, siteService));
         }
 

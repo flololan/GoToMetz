@@ -1,4 +1,4 @@
-package com.example.gotometz;
+package com.example.gotometz.navigation;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,6 +6,7 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 
+import com.example.gotometz.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Menu implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -20,7 +21,7 @@ public class Menu implements BottomNavigationView.OnNavigationItemSelectedListen
         categoryIntent = new Intent(this.context, CategoryActivity.class);
     }
 
-    // Quand on change d'activité dans le menu
+    // Switch for opening selected activity
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {

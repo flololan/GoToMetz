@@ -1,12 +1,14 @@
-package com.example.gotometz.state;
+package com.example.gotometz.map;
 
 import android.location.Location;
 import android.view.View;
 
-import com.example.gotometz.map.SearchSiteDialog;
-import com.example.gotometz.map.MyMapListener;
+import com.example.gotometz.listeners.MyMapListener;
 import com.google.android.gms.maps.model.LatLng;
 
+/**
+ * Logic for when clicking on map when SearchState is active
+ */
 public class StateSearchSite extends StateController {
 
     public StateSearchSite(MyMapListener myMapListener, StateController next) {

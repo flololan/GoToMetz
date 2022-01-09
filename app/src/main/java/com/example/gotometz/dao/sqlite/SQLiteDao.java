@@ -5,6 +5,10 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+/**
+* Bastract class for data manipulation
+* */
+
 public abstract class SQLiteDao<T> {
 
     protected SQLiteDatabase sqLiteDatabase;
@@ -17,14 +21,14 @@ public abstract class SQLiteDao<T> {
     }
 
     /*
-        Ecrire dans la bdd
+     *   Write into DB
      */
     public void openWritable() throws SQLException {
         sqLiteDatabase = databaseHelper.getWritableDatabase();
     }
 
     /*
-        Lire dans la bdd
+     *   Read from DB
      */
     public void openReadable() throws SQLException {
         sqLiteDatabase = databaseHelper.getReadableDatabase();

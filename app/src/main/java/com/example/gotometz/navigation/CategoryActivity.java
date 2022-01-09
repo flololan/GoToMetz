@@ -1,4 +1,4 @@
-package com.example.gotometz;
+package com.example.gotometz.navigation;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,11 @@ import android.widget.ListView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.gotometz.administration.DisplayCategoryFormListener;
+import com.example.gotometz.R;
+import com.example.gotometz.listeners.AddOrEditCategoryFormListener;
 import com.example.gotometz.dao.CategoryService;
-import com.example.gotometz.administration.CategoryListView;
-import com.example.gotometz.model.Category;
+import com.example.gotometz.list_views.CategoryListView;
+import com.example.gotometz.dbmodels.Category;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
@@ -28,32 +29,32 @@ public class CategoryActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_category);
 
-        // Menu
+        // Add Menu
         BottomNavigationView bottomNavigationView = this.findViewById(R.id.menu);
         bottomNavigationView.setSelectedItemId(R.id.categoryMenu);
         bottomNavigationView.setOnNavigationItemSelectedListener(new Menu(this));
 
-        // Récupération des données de la base
+        // Getting data from DB
         categoryService = CategoryService.getInstance(this);
         categoryList = categoryService.findAll();
 
-        // Remplit la liste des catégories
+        // Filling category list
         categoryListView = new CategoryListView(this, categoryList);
         listView = findViewById(R.id.categoryLV);
         listView.setAdapter(categoryListView);
 
-        // Bouton pour ajouter une catégorie
+        // Add category button
         Button addCategoryBTN = findViewById(R.id.addCategoryBTN);
-        addCategoryBTN.setOnClickListener(new DisplayCategoryFormListener(this, null));
+        addCategoryBTN.setOnClickListener(new AddOrEditCategoryFormListener(this, null));
     }
 
-    // On récupère les données venant des modales d'ajout et de modification de catégories
+    // Retrieve the data of sub activity for adding and modifying
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (data != null && data.getExtras() != null) {
-            // Si on ne récupère pas l'id de la catégorie, c'est qu'on veut en ajouter une. Sinon on la modifie
+            // If we can't get the ID of the category, it means the user wants to add one. Otherwise we edit it.
             if (data.getLongExtra("id", -1) == -1) {
                 Category category = new Category(data.getStringExtra("label"));
                 category.setId(categoryService.create(category));

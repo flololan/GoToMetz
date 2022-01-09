@@ -9,6 +9,10 @@ import com.example.gotometz.R;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.Marker;
 
+/**
+ * Description shown above pin needle for existing sites/POI
+ * Distance calculation handled in MapsActivity
+ */
 public class MarkerDescription implements GoogleMap.InfoWindowAdapter {
     private View markerModal = null;
     private LayoutInflater inflater;

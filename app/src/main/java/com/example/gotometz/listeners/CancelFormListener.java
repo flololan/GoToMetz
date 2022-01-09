@@ -1,9 +1,12 @@
-package com.example.gotometz.form;
+package com.example.gotometz.listeners;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 
+/**
+ * Listener that ends the activity
+ */
 public class CancelFormListener implements View.OnClickListener {
     private Activity activity;
 

@@ -1,4 +1,4 @@
-package com.example.gotometz.provider;
+package com.example.gotometz.providers;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.example.gotometz.dao.SiteService;
-import com.example.gotometz.model.Site;
+import com.example.gotometz.dbmodels.Site;
 
 public class SiteProvider extends ContentProvider {
 

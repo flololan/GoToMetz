@@ -4,6 +4,10 @@ import android.database.Cursor;
 
 import java.util.List;
 
+/**
+ * Interface for defining manipulation methods
+ * @param <T>
+ */
 public interface ServiceDAO<T> {
 
     long create(T object);

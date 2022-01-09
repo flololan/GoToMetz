@@ -1,11 +1,10 @@
-package com.example.gotometz;
+package com.example.gotometz.navigation;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
@@ -15,7 +14,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,15 +22,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.example.gotometz.administration.DisplaySiteFormListener;
+import com.example.gotometz.R;
+import com.example.gotometz.listeners.AddOrEditSiteFormListener;
 import com.example.gotometz.dao.CategoryService;
 import com.example.gotometz.dao.SiteService;
 import com.example.gotometz.map.MarkerDescription;
-import com.example.gotometz.map.MyMapListener;
+import com.example.gotometz.listeners.MyMapListener;
 import com.example.gotometz.map.SearchSiteDialog;
-import com.example.gotometz.map.SearchSiteListener;
-import com.example.gotometz.model.Category;
-import com.example.gotometz.model.Site;
+import com.example.gotometz.listeners.SearchSiteListener;
+import com.example.gotometz.dbmodels.Category;
+import com.example.gotometz.dbmodels.Site;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -57,26 +56,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     LocationManager locationManager = null;
     private String provider;
-    //MyLocationListener myLocationListener; // location listener
 
     // Used when doing a site research
     private Category searchedCategory;
-    private int searchedRadius;
-
+    private int searchRadius;
     public MyMapListener myMapListener;
     public FloatingActionButton mapSearchBTN;
     public FloatingActionButton mapAddBTN;
     public FloatingActionButton cornerFloatingBTN;
     boolean isAllFabsVisible;
 
-    public String bestProvider;
-    public Criteria criteria;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Vérifie les permissions
+        //Verifies permissions
         permissions = 0;
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -105,28 +100,29 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         }
 
-        //Lance l'application quand toutes les permissions sont accordées
+        //Once all permissions are granted, launch the app
         if (permissions == 3)
             run();
     }
 
+    //TO-DO: refactor
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        //Affiche un message si la permission n'est pas accordée
+        //Show message in case of user not granting permission
         Toast toast = Toast.makeText(this, this.getResources().getString(R.string.noPermissions), Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_DENIED)
             toast.show();
 
-        //Si la permission de localisation est accordée
+        //If permissions have been given
         if (requestCode == 1 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
             MapsActivity.permissions++;
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
-            //Si la permissionj d'écrire dans le fichier est accordée
+            //If permission to write in file system has been given
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
         } else
@@ -136,7 +132,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (MapsActivity.permissions == 2) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
                     != PackageManager.PERMISSION_GRANTED) {
-                //Si la permission de lire dans le fichier est accordée
+                //If read access has been given
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 3);
             } else
@@ -150,7 +146,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void run() {
         setContentView(R.layout.activity_maps);
 
-        //initialisation du menu
+        //initialise menu
         BottomNavigationView bottomNavigationView = this.findViewById(R.id.menu);
         bottomNavigationView.setSelectedItemId(R.id.mapMenu);
         bottomNavigationView.setOnNavigationItemSelectedListener(new Menu(this));
@@ -166,12 +162,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         siteDao = SiteService.getInstance(this);
 
         // Button listeners
-
         FloatingActionButton personSearchBTN = findViewById(R.id.personSearchBTN);
         personSearchBTN.setOnClickListener(new SearchSiteListener(this));
 
         FloatingActionButton personAddBTN = findViewById(R.id.personAddBTN);
-        personAddBTN.setOnClickListener(new DisplaySiteFormListener(this, null));
+        personAddBTN.setOnClickListener(new AddOrEditSiteFormListener(this, null));
 
         mapSearchBTN= findViewById(R.id.mapSearchBTN);
         mapAddBTN = findViewById(R.id.mapAddBTN);
@@ -233,7 +228,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         //Zoom on user's position
         if (location != null) {
             LatLng userLatLng = new LatLng(location.getLatitude(), location.getLongitude());
-            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(userLatLng, 12);
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(userLatLng, 18);
             mMap.animateCamera(cameraUpdate);
         }
 
@@ -246,14 +241,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        //Ajouter un site
+        //Add a site/POI
         if (data != null && data.getExtras() != null)
             if (data.getLongExtra("id", -1) == -1) {
                 Site site = new Site(data.getStringExtra("label"), data.getDoubleExtra("latitude", 0),
                         data.getDoubleExtra("longitude", 0), data.getStringExtra("postalAddress"),
                         categoryDao.findById(data.getLongExtra("categoryId", -1)), data.getStringExtra("summary"));
 
-                //Création du site dans la bdd
+                //Add site to DB
                 site.setId(siteDao.create(site));
             }
     }
@@ -261,7 +256,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onDialogPositiveClick(Location location, Category category, int radius) {
         searchedCategory = category;
-        searchedRadius = radius;
+        searchRadius = radius;
 
         searchSites(location);
     }
@@ -271,14 +266,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (searchedCategory != null) {
             mMap.clear();
 
-            //Ajouter le cercle sur la map
+            //Add circle on map
             mMap.addCircle(new CircleOptions()
                     .center(new LatLng(location.getLatitude(), location.getLongitude()))
-                    .radius(searchedRadius)
-                    .strokeColor(Color.BLACK)
-                    .fillColor(Color.argb(0.3f, 0, 0, 255)));
+                    .radius(searchRadius)
+                    .strokeColor(Color.TRANSPARENT)
+                    .strokeWidth(0.0f)
+                    .fillColor(Color.argb(0.01f, 120, 158, 165)));
 
-            //Ajouter les marqueurs sur la map
+            //Add markers to the map
             Location siteLocation = new Location("");
             LatLng siteLatLng;
             double siteDistance;
@@ -291,8 +287,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 siteDistance = location.distanceTo(siteLocation);
                 siteDistance = Math.round(siteDistance * 100) / 100.0;
 
-                //Vérifier si le marqueurs du site se situe dans la rayon de recherche
-                if (siteDistance <= searchedRadius)
+                //Check if marker is inside of search radius
+                if (siteDistance <= searchRadius)
                     mMap.addMarker(new MarkerOptions()
                             .position(siteLatLng)
                             .title(site.getLabel())
@@ -324,7 +320,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                this.onLocationChanged(location);
             else{
                 locationManager.requestLocationUpdates(provider, 1000, 0, this);
-                Log.e("Erreur Localisation","Entrer dans else de requestLocationUpdates");
+                //Log.e("Erreur Localisation","Entrer dans else de requestLocationUpdates");
                 if (location != null)
                     this.onLocationChanged(location);
             }
@@ -343,7 +339,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
-        Log.e("Erreur Localisation","onLocationChanged has been called");
+        //Log.e("Erreur Localisation","onLocationChanged has been called");
         this.setUserLocation(location);
         this.searchSites(location);
 

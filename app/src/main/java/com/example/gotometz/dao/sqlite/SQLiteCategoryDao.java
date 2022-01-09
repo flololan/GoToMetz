@@ -6,10 +6,14 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.example.gotometz.dao.ServiceDAO;
-import com.example.gotometz.model.Category;
+import com.example.gotometz.dbmodels.Category;
 
 import java.util.LinkedList;
 import java.util.List;
+
+/**
+ *  Definition of methods for content handling in DB for categories
+ */
 
 public class SQLiteCategoryDao extends SQLiteDao<Category> implements ServiceDAO<Category> {
 

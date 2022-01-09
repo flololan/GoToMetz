@@ -1,16 +1,19 @@
-package com.example.gotometz.map;
+package com.example.gotometz.listeners;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.View;
 
-import com.example.gotometz.MapsActivity;
-import com.example.gotometz.state.StateAddSite;
-import com.example.gotometz.state.StateController;
-import com.example.gotometz.state.StateSearchSite;
+import com.example.gotometz.navigation.MapsActivity;
+import com.example.gotometz.map.StateAddSite;
+import com.example.gotometz.map.StateController;
+import com.example.gotometz.map.StateSearchSite;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 
+/**
+ * Checks if user tapped the map, depending on state will call AddSite or SearchSite
+ */
 public class MyMapListener implements GoogleMap.OnMapClickListener, View.OnClickListener {
 
     public MapsActivity activity;

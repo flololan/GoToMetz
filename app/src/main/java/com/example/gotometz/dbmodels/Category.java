@@ -1,4 +1,4 @@
-package com.example.gotometz.model;
+package com.example.gotometz.dbmodels;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
@@ -7,6 +7,9 @@ import androidx.annotation.NonNull;
 
 import java.util.Objects;
 
+/**
+ * Model for categories
+ */
 public class Category {
 
     private long id;

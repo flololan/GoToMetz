@@ -1,4 +1,4 @@
-package com.example.gotometz;
+package com.example.gotometz.navigation;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,11 +8,12 @@ import android.widget.ListView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.gotometz.administration.DisplaySiteFormListener;
+import com.example.gotometz.R;
+import com.example.gotometz.listeners.AddOrEditSiteFormListener;
 import com.example.gotometz.dao.CategoryService;
 import com.example.gotometz.dao.SiteService;
-import com.example.gotometz.administration.SiteListView;
-import com.example.gotometz.model.Site;
+import com.example.gotometz.list_views.SiteListView;
+import com.example.gotometz.dbmodels.Site;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
@@ -47,7 +48,7 @@ public class SiteActivity extends AppCompatActivity {
 
         // Bouton pour ajouter un site
         Button addSiteBTN = findViewById(R.id.addSiteBTN);
-        addSiteBTN.setOnClickListener(new DisplaySiteFormListener(this, null));
+        addSiteBTN.setOnClickListener(new AddOrEditSiteFormListener(this, null));
     }
 
     // On récupère les données venant des modales d'ajout et de modification de site

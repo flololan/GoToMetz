@@ -1,9 +1,13 @@
-package com.example.gotometz.map;
+package com.example.gotometz.listeners;
 
 import android.view.View;
 
-import com.example.gotometz.MapsActivity;
+import com.example.gotometz.map.SearchSiteDialog;
+import com.example.gotometz.navigation.MapsActivity;
 
+/**
+ * Opens Search Site dialog
+ */
 public class SearchSiteListener implements View.OnClickListener {
 
     private MapsActivity activity;

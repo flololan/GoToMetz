@@ -1,4 +1,4 @@
-package com.example.gotometz.administration;
+package com.example.gotometz.list_views;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,14 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.gotometz.CategoryActivity;
+import com.example.gotometz.navigation.CategoryActivity;
 import com.example.gotometz.R;
 import com.example.gotometz.dao.CategoryService;
 import com.example.gotometz.dao.SiteService;
-import com.example.gotometz.model.Category;
+import com.example.gotometz.listeners.DeleteCategoryListener;
+import com.example.gotometz.listeners.AddOrEditCategoryFormListener;
+import com.example.gotometz.dbmodels.Category;
 
 import java.util.List;
-
+/**
+ * Sub-view of category list to be added in activities
+ */
 public class CategoryListView extends ArrayAdapter<Category> {
     private CategoryActivity categoryActivity;
     private CategoryService categoryDao;
@@ -46,7 +50,7 @@ public class CategoryListView extends ArrayAdapter<Category> {
         assert category != null;
         label.setText(category.getLabel());
         summary.setVisibility(View.GONE);
-        update.setOnClickListener(new DisplayCategoryFormListener(categoryActivity, category));
+        update.setOnClickListener(new AddOrEditCategoryFormListener(categoryActivity, category));
         delete.setOnClickListener(new DeleteCategoryListener(categoryActivity, this, category, categoryDao, siteDao));
 
         return view;

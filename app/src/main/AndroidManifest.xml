@@ -17,7 +17,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Aller à Metz"
+        android:label="Sortir à Metz"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -36,8 +36,8 @@
             android:value="@string/google_maps_key" />
         <!--android:exported: Needs to be added for Android 12-->
         <activity
-            android:name=".MapsActivity"
-            android:label="Aller à Metz"
+            android:name=".navigation.MapsActivity"
+            android:label="Sortir à Metz"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,16 +46,17 @@
         </activity>
 
         <activity
-            android:name=".SiteActivity"
+            android:name=".navigation.SiteActivity"
             android:label="@string/site" />
 
         <activity
-            android:name=".CategoryActivity"
+            android:name=".navigation.CategoryActivity"
             android:label="@string/category" />
 
         <activity
-            android:name=".Menu"
-            android:label="@string/menu" />
+            android:name=".navigation.Menu"
+            android:label="@string/menu"
+            tools:ignore="Instantiatable" />
 
         <activity
             android:name=".form.CategoryForm"
@@ -66,8 +67,8 @@
             android:label="@string/form" />
 
         <provider
-            android:authorities="com.example.gotometz.provider"
-            android:name=".provider.CategoryProvider"
+            android:authorities="com.example.gotometz.providers"
+            android:name=".providers.CategoryProvider"
             android:exported="true"
             android:enabled="true"
             tools:ignore="ExportedContentProvider" />

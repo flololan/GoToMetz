@@ -1,14 +1,14 @@
-package com.example.gotometz.form;
+package com.example.gotometz.listeners;
 
 import android.content.Intent;
 import android.view.View;
-import android.widget.EditText;
 
-import com.example.gotometz.model.Category;
+import com.example.gotometz.form.SiteForm;
+import com.example.gotometz.dbmodels.Category;
 
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * Submits data and closes form
+ */
 public class SubmitFormSiteListener implements View.OnClickListener {
     private SiteForm siteForm;
 

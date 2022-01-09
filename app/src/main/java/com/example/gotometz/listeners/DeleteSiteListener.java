@@ -1,14 +1,17 @@
-package com.example.gotometz.administration;
+package com.example.gotometz.listeners;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.View;
 
 import com.example.gotometz.R;
-import com.example.gotometz.SiteActivity;
+import com.example.gotometz.navigation.SiteActivity;
+import com.example.gotometz.list_views.SiteListView;
 import com.example.gotometz.dao.SiteService;
-import com.example.gotometz.model.Site;
-
+import com.example.gotometz.dbmodels.Site;
+/**
+ * Listener for  site/POI deletion
+ */
 public class DeleteSiteListener implements View.OnClickListener {
     private Site site;
     private SiteListView siteListView;

@@ -4,11 +4,14 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.example.gotometz.dao.sqlite.SQLiteSiteDao;
-import com.example.gotometz.model.Category;
-import com.example.gotometz.model.Site;
+import com.example.gotometz.dbmodels.Category;
+import com.example.gotometz.dbmodels.Site;
 
 import java.util.List;
 
+/**
+ * Assign methods to be used with sites/POI
+ */
 public class SiteService implements ServiceDAO<Site>{
 
     private static SiteService instance;

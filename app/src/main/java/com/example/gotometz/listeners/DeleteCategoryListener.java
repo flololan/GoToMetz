@@ -1,16 +1,20 @@
-package com.example.gotometz.administration;
+package com.example.gotometz.listeners;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.gotometz.CategoryActivity;
+import com.example.gotometz.navigation.CategoryActivity;
 import com.example.gotometz.R;
+import com.example.gotometz.list_views.CategoryListView;
 import com.example.gotometz.dao.CategoryService;
 import com.example.gotometz.dao.SiteService;
-import com.example.gotometz.model.Category;
+import com.example.gotometz.dbmodels.Category;
 
+/**
+ * Listener for  category deletion
+ */
 public class DeleteCategoryListener implements View.OnClickListener {
     private Category category;
     private CategoryListView categoryListView;
@@ -28,7 +32,7 @@ public class DeleteCategoryListener implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        // On ne veut pas supprimer une catégorie qui est utilisée par un site
+        // If a site/POI uses the category, deletion will be blocked. And a warning will be displayed
         if (siteService.isCategoryUsed(category)) {
             Toast.makeText(categoryActivity, R.string.warningDelete, Toast.LENGTH_LONG).show();
         } else {

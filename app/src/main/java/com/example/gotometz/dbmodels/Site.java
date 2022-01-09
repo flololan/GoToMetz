@@ -1,7 +1,10 @@
-package com.example.gotometz.model;
+package com.example.gotometz.dbmodels;
 
 import android.content.ContentValues;
 
+/**
+ * Model for sites/POI
+ */
 public class Site {
 
     private long id;

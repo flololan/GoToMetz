@@ -6,7 +6,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 /*
-    Creation bdd
+    Database creation
+    Table definition
+    definition of Create, Upgrade, Downgrade content
+
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -64,8 +67,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         Log.w(DatabaseHelper.class.getName(),
-                "Mise à jour de la base de données, de la version " + oldVersion + " à la version "
-                        + newVersion + ", détruisant les anciennes données");
+                "Updating data from version " + oldVersion + " to version "
+                        + newVersion + ". Data will be overwritten.");
 
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_SITE);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_CATEGORY);

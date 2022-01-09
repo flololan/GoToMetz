@@ -1,17 +1,20 @@
-package com.example.gotometz.administration;
+package com.example.gotometz.listeners;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 
 import com.example.gotometz.form.CategoryForm;
-import com.example.gotometz.model.Category;
+import com.example.gotometz.dbmodels.Category;
 
-public class DisplayCategoryFormListener implements View.OnClickListener {
+/**
+ * Listener for opening the adding a category form
+ */
+public class AddOrEditCategoryFormListener implements View.OnClickListener {
     private Activity activity;
     private Category category;
 
-    public DisplayCategoryFormListener(Activity activity, Category category) {
+    public AddOrEditCategoryFormListener(Activity activity, Category category) {
         this.activity = activity;
         this.category = category;
     }

@@ -1,12 +1,15 @@
-package com.example.gotometz.state;
+package com.example.gotometz.map;
 
 import android.content.Intent;
 import android.view.View;
 
 import com.example.gotometz.form.SiteForm;
-import com.example.gotometz.map.MyMapListener;
+import com.example.gotometz.listeners.MyMapListener;
 import com.google.android.gms.maps.model.LatLng;
 
+/**
+ * Logic for when clicking on map when AddState is active
+ */
 public class StateAddSite extends StateController {
 
     public StateAddSite(MyMapListener myMapListener, StateController next) {
