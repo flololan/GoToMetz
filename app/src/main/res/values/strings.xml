@@ -1,44 +1,45 @@
 <resources>
-    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps">Carte</string>
 
 <!--  Site  -->
-    <string name="siteTitle">Sites list</string>
-    <string name="addSite">Add site</string>
-    <string name="updateSite">Update site</string>
-    <string name="labelSite">Site label</string>
-    <string name="hintSite">Le Paradis</string>
+    <string name="siteTitle">Liste des sites</string>
+    <string name="addSite">Ajouter un site</string>
+    <string name="updateSite">Modifier le site</string>
+    <string name="labelSite">Nom du site</string>
+    <string name="hintSite">Restaurant du exemple</string>
     <string name="latitude">Latitude</string>
-    <string name="hintLatitude">10</string>
+    <string name="hintLatitude">49.1042</string>
     <string name="longitude">Longitude</string>
-    <string name="hintLongitude">10</string>
-    <string name="postalAddress">Postal address</string>
-    <string name="hintPostalAddress">46 En Fournirue</string>
-    <string name="summary">Summary</string>
-    <string name="hintSummary">Restaurant well noted in Metz</string>
+    <string name="hintLongitude">6.2082</string>
+    <string name="postalAddress">Adresse postale</string>
+    <string name="hintPostalAddress">69 Rue de l\'exemple</string>
+    <string name="summary">Description</string>
+    <string name="hintSummary">Le lieu bien connu à Metz</string>
 
 <!--  Catégorie  -->
-    <string name="categoryTitle">Categories list</string>
-    <string name="addCategory">Add category</string>
-    <string name="updateCategory">Update category</string>
-    <string name="labelCategory">Category label</string>
-    <string name="hintCategory">Restaurant</string>
+    <string name="categoryTitle">Liste des catégories</string>
+    <string name="addCategory">Ajouter une catégorie</string>
+    <string name="updateCategory">Modifier la catégorie</string>
+    <string name="labelCategory">Nom de la catégorie</string>
+    <string name="hintCategory">Parc</string>
 
 <!--  Autre  -->
-    <string name="map">Map</string>
+    <string name="map">Carte</string>
     <string name="site">Sites</string>
-    <string name="category">Categories</string>
+    <string name="category">Catégories</string>
     <string name="menu">Menu</string>
-    <string name="add">Add</string>
-    <string name="update">Update</string>
-    <string name="delete">Delete</string>
-    <string name="cancel">Cancel</string>
-    <string name="deleteCategory">Delete this category?</string>
-    <string name="deleteSite">Delete this site?</string>
-    <string name="warningDelete">This category is associated to a site. You cannot delete it</string>
-    <string name="form">Form</string>
-    <string name="search">Start a research</string>
+    <string name="add">Ajouter</string>
+    <string name="update">Modifier</string>
+    <string name="delete">Supprimer</string>
+    <string name="cancel">Annuler</string>
+    <string name="deleteCategory">Êtes-vous sûr de vouloir supprimer cette catégorie ?</string>
+    <string name="deleteSite">Êtes-vous sûr de vouloir supprimer ce site ?</string>
+    <string name="warningDelete">Cette catégorie est associée à un site. Vous ne pouvez pas la supprimer.</string>
+    <string name="form">Formulaire</string>
+    <string name="search">Commencez une recherche</string>
     <string name="distance">Distance</string>
-    <string name="hintDistance">100</string>
-    <string name="app_name" translatable="false">GoToMetz</string>
-    <string name="noPermissions">Please allow location and files and multimedia contents data sharing in the application\'s parameters !</string>
+    <string name="hintDistance">420</string>
+    <string name="app_name" translatable="false">Aller à Metz</string>
+    <string name="noPermissions">Veuillez autoriser le partage des données de localisation et des fichiers et contenus multimédia dans les paramètres de l\'application!</string>
+    <string name="localisationNotPossible">Localisation impossible, votre GPS est-il activé ?</string>
 </resources>

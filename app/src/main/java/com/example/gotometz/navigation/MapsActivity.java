@@ -66,7 +66,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public FloatingActionButton cornerFloatingBTN;
     boolean isAllFabsVisible;
 
-
+    //TO-DO: refactor
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +75,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         permissions = 0;
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-            //Permission de localisation
+            //Permission of localisation
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         } else {
@@ -299,32 +299,35 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @SuppressLint("MissingPermission")
     private void locationInitialization() {
+            try {
+                locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+                Criteria criteria = new Criteria();
+                provider = LocationManager.NETWORK_PROVIDER;
 
 
-            locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-            Criteria criteria = new Criteria();
-            provider = LocationManager.NETWORK_PROVIDER;
+                criteria.setAccuracy(Criteria.ACCURACY_FINE);
+                criteria.setAltitudeRequired(true);
+                criteria.setBearingRequired(true);
+                criteria.setSpeedRequired(true);
+                criteria.setCostAllowed(true);
+                criteria.setPowerRequirement(Criteria.POWER_HIGH);
 
 
-            criteria.setAccuracy(Criteria.ACCURACY_FINE);
-            criteria.setAltitudeRequired(true);
-            criteria.setBearingRequired(true);
-            criteria.setSpeedRequired(true);
-            criteria.setCostAllowed(true);
-            criteria.setPowerRequirement(Criteria.POWER_HIGH);
+                setUserLocation(locationManager.getLastKnownLocation(provider));
 
-
-            setUserLocation(locationManager.getLastKnownLocation(provider));
-
-            if (location != null)
-               this.onLocationChanged(location);
-            else{
-                locationManager.requestLocationUpdates(provider, 1000, 0, this);
-                //Log.e("Erreur Localisation","Entrer dans else de requestLocationUpdates");
                 if (location != null)
                     this.onLocationChanged(location);
-            }
+                else{
+                    locationManager.requestLocationUpdates(provider, 1000, 0, this);
+                    //Log.e("Erreur Localisation","Entrer dans else de requestLocationUpdates");
+                    if (location != null)
+                        this.onLocationChanged(location);
+                }
 
+            }catch (Exception e){
+                Toast.makeText(this, R.string.localisationNotPossible, Toast.LENGTH_LONG).show();
+
+            }
 
 
     }

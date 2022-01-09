@@ -14,6 +14,7 @@ import com.example.gotometz.dao.CategoryService;
 import com.example.gotometz.list_views.CategoryListView;
 import com.example.gotometz.dbmodels.Category;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -22,6 +23,8 @@ public class CategoryActivity extends AppCompatActivity {
     private List<Category> categoryList;
     private CategoryListView categoryListView;
     private ListView listView;
+
+    public FloatingActionButton addCategoryBTN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +47,8 @@ public class CategoryActivity extends AppCompatActivity {
         listView.setAdapter(categoryListView);
 
         // Add category button
-        Button addCategoryBTN = findViewById(R.id.addCategoryBTN);
+
+        FloatingActionButton addCategoryBTN = findViewById(R.id.addCategoryBTN);
         addCategoryBTN.setOnClickListener(new AddOrEditCategoryFormListener(this, null));
     }
 
