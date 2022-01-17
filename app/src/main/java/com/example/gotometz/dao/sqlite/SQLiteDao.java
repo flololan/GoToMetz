@@ -6,7 +6,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
-* Bastract class for data manipulation
+* Abstract class for data manipulation
 * */
 
 public abstract class SQLiteDao<T> {
